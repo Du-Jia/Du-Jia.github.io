@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+
+    
+
+    
+    <title>云计算课程笔记 | Du-Jia</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content>
+    
+    <meta name="description" content="云计算导论 教材：刘鹏: 《云计算（第三版）》Adrian Mouat: 《Docker 开发指南》龚正等： 《Kubernetes权威指南》张晓斌： 《OpenStack企业云平台架构与实践》  [toc] 概论从大数据到云计算 目前数据量与日俱增 单机无法在合理时间内处理 存在大量的复杂数据 4V特征 大数据的构成 交易数据 交互数据 数据处理（分布式存储，分布式计算）   数据密集型处理架构">
+<meta name="keywords" content="Personal Blog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="云计算课程笔记">
+<meta property="og:url" content="http://yoursite.com/2019/03/18/云计算课程笔记/index.html">
+<meta property="og:site_name" content="Du-Jia">
+<meta property="og:description" content="云计算导论 教材：刘鹏: 《云计算（第三版）》Adrian Mouat: 《Docker 开发指南》龚正等： 《Kubernetes权威指南》张晓斌： 《OpenStack企业云平台架构与实践》  [toc] 概论从大数据到云计算 目前数据量与日俱增 单机无法在合理时间内处理 存在大量的复杂数据 4V特征 大数据的构成 交易数据 交互数据 数据处理（分布式存储，分布式计算）   数据密集型处理架构">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/2019/03/18/云计算课程笔记/1541377189271.png">
+<meta property="og:updated_time" content="2019-03-18T07:29:16.406Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="云计算课程笔记">
+<meta name="twitter:description" content="云计算导论 教材：刘鹏: 《云计算（第三版）》Adrian Mouat: 《Docker 开发指南》龚正等： 《Kubernetes权威指南》张晓斌： 《OpenStack企业云平台架构与实践》  [toc] 概论从大数据到云计算 目前数据量与日俱增 单机无法在合理时间内处理 存在大量的复杂数据 4V特征 大数据的构成 交易数据 交互数据 数据处理（分布式存储，分布式计算）   数据密集型处理架构">
+<meta name="twitter:image" content="http://yoursite.com/2019/03/18/云计算课程笔记/1541377189271.png">
+    
+
+    
+        <link rel="alternate" href="/" title="Du-Jia" type="application/atom+xml">
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+
+
+</head>
+</html>
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">Record the time</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item">
+                                    <a class="main-nav-list-link" href="/">Home</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item">
+                                    <a class="main-nav-list-link" href="/categories/">Category</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item">
+                                    <a class="main-nav-list-link" href="/">Tech</a>
+                                </li>
+                            
+                                <li class="main-nav-list-item">
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    uncategorized
+    </h1>
+</div>
+                        <div class="main-body-content">
+                            <article id="post-云计算课程笔记" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        云计算课程笔记
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/2019/03/18/云计算课程笔记/" class="article-date">
+            <time datetime="2019-03-18T07:25:57.000Z" itemprop="datePublished">2019-03-18</time>
+        </a>
+    </div>
+
+                
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h1 id="云计算导论"><a href="#云计算导论" class="headerlink" title="云计算导论"></a>云计算导论</h1><blockquote>
+<p>教材：<br>刘鹏: 《云计算（第三版）》<br>Adrian Mouat: 《Docker 开发指南》<br>龚正等： 《Kubernetes权威指南》<br>张晓斌： 《OpenStack企业云平台架构与实践》</p>
+</blockquote>
+<p>[toc]</p>
+<h2 id="概论"><a href="#概论" class="headerlink" title="概论"></a>概论</h2><h3 id="从大数据到云计算"><a href="#从大数据到云计算" class="headerlink" title="从大数据到云计算"></a>从大数据到云计算</h3><ul>
+<li>目前数据量与日俱增</li>
+<li>单机无法在合理时间内处理</li>
+<li>存在大量的复杂数据</li>
+<li>4V特征</li>
+<li>大数据的构成<ul>
+<li>交易数据</li>
+<li>交互数据</li>
+<li>数据处理（分布式存储，分布式计算）</li>
+</ul>
+</li>
+<li>数据密集型处理架构</li>
+<li>关键技术<ul>
+<li>数据采集<ul>
+<li>Hadoop（硬盘读取）</li>
+<li>NLP</li>
+<li>文本处理</li>
+<li>多媒体处理</li>
+<li>Streaming Data（内存内作计算，势头比较猛，建议学习方向）</li>
+</ul>
+</li>
+<li>数据分析<ul>
+<li>交互式可视化探索分析</li>
+<li>大规模机器学习</li>
+</ul>
+</li>
+<li>存储，组织，管理<ul>
+<li>数据隐私防范保护措施与数据安全技术</li>
+<li>数据存储备份</li>
+<li>数据放置和调度</li>
+<li>建议学习数据挖掘课程</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>单机不能处理这样巨量的数据，所以需要引入云计算<h3 id="云计算概述"><a href="#云计算概述" class="headerlink" title="云计算概述"></a>云计算概述</h3></li>
+<li>云计算核心理念<ul>
+<li>在一大堆烂机器上提供高性能可靠服务</li>
+</ul>
+</li>
+<li>特点<ul>
+<li>超大规模</li>
+<li><strong>虚拟化</strong><br>  虚拟化是表示计算机资源的抽象方法。如VMware中虚拟机一样，通过虚拟化可以访问虚拟化前的计算资源并且屏蔽了虚拟化之前的底层资源。<ul>
+<li>服务器虚拟化</li>
+<li>存储虚拟化</li>
+<li>网络虚拟化</li>
+<li>桌面虚拟化</li>
+<li>虚拟化计算模式：<ul>
+<li>所有电脑的计算资源组成一个<strong>资源池</strong></li>
+<li>虚拟硬件对资源池中的计算资源进行统一管理</li>
+</ul>
+</li>
+<li>服务器虚拟化的意义<ul>
+<li>共享和隔离： 在单一物理服务器上同时运行多个虚拟机，虚拟机之间相互隔离</li>
+<li>资源弹性：虚拟机可以根据其需求弹性增加或减少其分配的硬件资源。提高硬件资源分配的灵活性。</li>
+<li>封装：将整个系统封装到文件里。</li>
+<li>迁移：不加修改，直接迁移，增强系统的可靠性和可拓展性。</li>
+</ul>
+</li>
+<li>KVM </li>
+</ul>
+</li>
+<li>高可靠性<ul>
+<li>可靠的数据存储中心，数据备份</li>
+<li>数据在云端，不怕丢失</li>
+<li>动态迁移</li>
+<li>没有空间，时间限制，登录即可运算。</li>
+</ul>
+</li>
+<li>高可伸缩性<ul>
+<li>动态伸缩</li>
+<li>软件自动升级</li>
+</ul>
+</li>
+<li>按需服务<ul>
+<li>资源池</li>
+<li>按需购买</li>
+</ul>
+</li>
+<li>极其廉价<ul>
+<li>廉价节点构成云</li>
+<li>管理成本低</li>
+<li>提高资源利用率</li>
+<li>建在电力资源丰富的地区，降低成本</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>云计算产品<ul>
+<li>SaaS: </li>
+<li>PaaS: Chrome OS</li>
+<li>IaaS<ul>
+<li>阿里云</li>
+<li>腾讯云</li>
+<li>Amazon EC2 / S3</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>云计算实现机制<ul>
+<li>SAO构建层</li>
+<li>管理中间件层</li>
+<li>资源池层</li>
+<li>物；理资源层<h2 id="虚拟化（11-04）"><a href="#虚拟化（11-04）" class="headerlink" title="虚拟化（11.04）"></a>虚拟化（11.04）</h2>…………<h3 id="KVM"><a href="#KVM" class="headerlink" title="KVM"></a>KVM</h3></li>
+</ul>
+</li>
+<li><strong>KVM</strong>加载Linux内核，提供<strong>内存</strong>和<strong>CPU</strong>的虚拟化</li>
+<li><strong>Qemu</strong>实现其他硬件的虚拟化</li>
+<li><img src="./1541377189271.png" alt="Alt text"></li>
+<li>Qemu 是纯软件实现的，所有的指令都要经 Qemu 转译，性能非常低</li>
+<li><img src="./1541377223498.png" alt="Alt text"><h3 id="KVM管理工具"><a href="#KVM管理工具" class="headerlink" title="KVM管理工具"></a>KVM管理工具</h3></li>
+<li>QEMU-KVM<ul>
+<li>只能管理KVM虚拟机</li>
+<li><strong>Libvirt</strong>, <strong>virsh</strong>, <strong>virt-manager</strong></li>
+<li>Libvirt 是一套免费、开源的支持Linux下主流虚拟化平台的C函数库，旨在为各种虚拟化平台提供一套方便、可靠的编程接口（virt-manager基于Libvirt开发）</li>
+<li><img src="./1541377841347.png" alt="Alt text"></li>
+<li>Libvirt、Qemu、KVM的关系：<img src="./1541377871854.png" alt="Alt text"><h3 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h3><h4 id="开启虚拟化"><a href="#开启虚拟化" class="headerlink" title="开启虚拟化"></a>开启虚拟化</h4></li>
+</ul>
+</li>
+<li><p><strong>CentOS</strong></p>
+<ul>
+<li>验证CPU是否支持KVM<code>egrep &quot;vmx|svm&quot; /proc/cpuinfo</code>（结果中出现vmx或者svm）</li>
+<li>关闭SELinux：将<code>/etc/sysconfig/selinux</code>中的<strong>SELinux=enforcing</strong>修改为<strong>SELinux=disabled</strong></li>
+<li><p>关闭防火墙</p>
+<p>  systemctl disable firewalled<br>  systemctl stop firewalled</p>
+</li>
+<li><p>关闭NetWorkManager</p>
+<pre><code>systemctl stop NetworkManager
+</code></pre></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://yoursite.com/2019/03/18/云计算课程笔记/" data-id="cjte11c2k0001yotwkbqicep3" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>follow:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="google-plus" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-google-plus"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/Du-Jia" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2018/08/10/C++中集合的简单使用/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">C++中集合的简单使用</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">recents</h3>
+        <div class="widget">
+            <ul id="recent-post" class>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2019/03/18/云计算课程笔记/" class="thumbnail">
+    
+    
+        <span style="background-image:url(./1541377189271.png)" alt="云计算课程笔记" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2019/03/18/云计算课程笔记/" class="title">云计算课程笔记</a></p>
+                            <p class="item-date"><time datetime="2019-03-18T07:25:57.000Z" itemprop="datePublished">2019-03-18</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/08/10/C++中集合的简单使用/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1533994725237&di=bcaf1cb206de688fe0a45dff9a8cf74b&imgtype=0&src=http%3A%2F%2Fimg05.tooopen.com%2Fimages%2F20140903%2Fsy_70159641589.jpg)" alt="C++中集合的简单使用" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/08/10/C++中集合的简单使用/" class="title">C++中集合的简单使用</a></p>
+                            <p class="item-date"><time datetime="2018-08-10T12:28:01.000Z" itemprop="datePublished">2018-08-10</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2018/08/10/hello-world/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2018/08/10/hello-world/" class="title">Hello World</a></p>
+                            <p class="item-date"><time datetime="2018-08-10T12:00:15.365Z" itemprop="datePublished">2018-08-10</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Basic/">Basic</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/">C++</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/Basic/" style="font-size: 10px;">Basic</a> <a href="/tags/C/" style="font-size: 10px;">C++</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2019 Du Jia</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+        
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'http://yoursite.com/2019/03/18/云计算课程笔记/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
