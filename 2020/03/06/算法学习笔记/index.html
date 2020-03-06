@@ -12,15 +12,15 @@
     
     <meta name="keywords" content="笔记,算法,刷题" />
     
-    <meta name="description" content="Make the world difference">
+    <meta name="description" content="刷题笔记Sample Level 排序  B1015&#x2F;A1062:   这是一道分类排序题，可以将成绩分成5个类别，最后一个类别不用输出。   思路一：将类别作为结构体的一个成员，将所有学生进行排序（快速排序算法），平均复杂度为：$O(NlogN)$。  思路二：分类存储每一类成绩，再分别对其排序。   超时问题：   最开始以为是因为排序算法的复杂度过高导致的超时，后经查阅其他人的博客发现，超时">
 <meta property="og:type" content="article">
 <meta property="og:title" content="算法学习笔记">
 <meta property="og:url" content="http://du-jia.github.io/2020/03/06/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="Du-Jia&#39;s Blog">
-<meta property="og:description" content="Make the world difference">
+<meta property="og:description" content="刷题笔记Sample Level 排序  B1015&#x2F;A1062:   这是一道分类排序题，可以将成绩分成5个类别，最后一个类别不用输出。   思路一：将类别作为结构体的一个成员，将所有学生进行排序（快速排序算法），平均复杂度为：$O(NlogN)$。  思路二：分类存储每一类成绩，再分别对其排序。   超时问题：   最开始以为是因为排序算法的复杂度过高导致的超时，后经查阅其他人的博客发现，超时">
 <meta property="og:locale" content="zh">
 <meta property="article:published_time" content="2020-03-06T03:56:57.000Z">
-<meta property="article:modified_time" content="2020-03-06T03:57:18.896Z">
+<meta property="article:modified_time" content="2020-03-06T08:51:36.194Z">
 <meta property="article:author" content="Du-Jia">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="算法">
@@ -86,13 +86,13 @@
                         <ul id="main-nav">
                             
                                 <li class="main-nav-list-item" >
-                                    <a class="main-nav-list-link" href="/">Inici</a>
+                                    <a class="main-nav-list-link" href="/">Home</a>
                                 </li>
                             
                                         <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">源码分析</a></li></ul>
                                     
                                 <li class="main-nav-list-item" >
-                                    <a class="main-nav-list-link" href="/about/index.html">Quant a</a>
+                                    <a class="main-nav-list-link" href="/about/index.html">About</a>
                                 </li>
                             
                         </ul>
@@ -100,7 +100,7 @@
                             <div id="search-form-wrap">
 
     <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Cercar" />
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
         <button type="submit" class="search-form-submit"></button>
     </form>
     <div class="ins-search">
@@ -121,8 +121,8 @@
         TRANSLATION: {
             POSTS: 'Posts',
             PAGES: 'Pages',
-            CATEGORIES: 'categories',
-            TAGS: 'etiquetes',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
             UNTITLED: '(Untitled)',
         },
         ROOT_URL: '/',
@@ -150,7 +150,7 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    Sense categoria
+    uncategorized
     </h1>
 </div>
 
@@ -195,14 +195,89 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            
+            <h1 id="刷题笔记"><a href="#刷题笔记" class="headerlink" title="刷题笔记"></a>刷题笔记</h1><h2 id="Sample-Level"><a href="#Sample-Level" class="headerlink" title="Sample Level"></a>Sample Level</h2><ul>
+<li><p>排序</p>
+<ul>
+<li><p>B1015/A1062:</p>
+<p>  这是一道分类排序题，可以将成绩分成5个类别，最后一个类别不用输出。</p>
+<p>  思路一：将类别作为结构体的一个成员，将所有学生进行排序（快速排序算法），平均复杂度为：$O(NlogN)$。<br>  思路二：分类存储每一类成绩，再分别对其排序。</p>
+<p>  <strong>超时问题</strong>：</p>
+<p>  最开始以为是因为排序算法的复杂度过高导致的超时，后经查阅其他人的博客发现，超时的原因是<strong>cin的速度比较慢，这里应该使用scanf函数来控制输入</strong>，如果使用cin函数，应该使用以下函数<code>ios::sync_with_stdio(false)</code>以取消<code>cin</code>和<code>cout</code>的同步机制（但是这种方法还是比<code>scanf</code>慢，因此此题建议使用<code>scanf</code></p>
+<p>  总结：</p>
+<ol>
+<li><p>基本排序算法的实现-快速排序</p>
+<p> 快速排序每次选择一个哨兵<code>i</code>作为标准，将整个序列分成两个部分：大于<code>i</code>的元素和小于<code>i</code>的元素。通过递归每次将两个部分再次进行排序，最终完成对序列整体的排序。</p>
+<p> 代码实现：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 函数中的compare函数自己实现</span><br><span class="line">void quick_sort(Student students[], int start, int ends)&#123;</span><br><span class="line">    if(start &lt; ends)&#123;</span><br><span class="line">        int low &#x3D; start, high &#x3D; ends;</span><br><span class="line">        Student tmp &#x3D; students[low];</span><br><span class="line">        while(low &lt; high)&#123;&#x2F;&#x2F;把数组分成两个部分：应该排在tmp前面的和后面的</span><br><span class="line">            while(low &lt; high &amp;&amp; compare(tmp, students[high]) &#x3D;&#x3D; true)&#123;</span><br><span class="line">                &#x2F;&#x2F;如果tudents[high]排在tmo的后面</span><br><span class="line">                high--;</span><br><span class="line">            &#125;</span><br><span class="line">            students[low] &#x3D; students[high];</span><br><span class="line">            while(low &lt; high &amp;&amp; compare(tmp, students[low]) &#x3D;&#x3D; false)&#123;</span><br><span class="line">                low++;</span><br><span class="line">            &#125;</span><br><span class="line">            students[high] &#x3D; students[low];</span><br><span class="line">        &#125;</span><br><span class="line">        students[low] &#x3D; tmp;</span><br><span class="line">        quick_sort(students, start, low-1);</span><br><span class="line">        quick_sort(students, low+1, ends);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用库函数：<code>sort()</code>函数的使用方法</p>
+<p> 下面简单介绍sort()函数的使用方法：</p>
+<p> <code>sort()</code>函数包含在<code>algorithm</code>库中</p>
+<p> <strong>Sorting:</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">method name</th>
+<th align="center">function</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">sort</td>
+<td align="center">Sort elements in range (function template )</td>
+</tr>
+<tr>
+<td align="center">stable_sort</td>
+<td align="center">Sort elements preserving order of equivalents (function template )</td>
+</tr>
+<tr>
+<td align="center">partial_sort</td>
+<td align="center">Partially sort elements in range (function template )</td>
+</tr>
+<tr>
+<td align="center">partial_sort_copy</td>
+<td align="center">Copy and partially sort range (function template )</td>
+</tr>
+<tr>
+<td align="center">is_sorted</td>
+<td align="center">Check whether range is sorted (function template )</td>
+</tr>
+<tr>
+<td align="center">is_sorted_until</td>
+<td align="center">Find first unsorted element in range (function template )</td>
+</tr>
+<tr>
+<td align="center">nth_element</td>
+<td align="center">Sort element in range (function template )</td>
+</tr>
+</tbody></table>
+<p> <code>sort</code>的功能是对一个区间内的元素进行排序，默认非降序排序，可以通过自己实现compare函数控制排序。（不稳定排序，如果需要使用稳定排序，可以使用<code>stable_sort</code>函数进行排序）</p>
+<p> <code>sort(first, last, comp)</code>对$[first, last)$范围内的元素进行排序（左开右闭）</p>
+<p> <code>comp</code>参数是一个函数指针，这个函数应该返回一个<code>bool</code>值，sort函数根据bool值进行排序。</p>
+<p> e.g.,</p>
+<p> <code>bool comp(Elem a, Elem b)</code>返回<code>true</code>, 则表示排序过程中，<code>a</code>应该排在<code>b</code>的<strong>前面</strong>。</p>
+<p> 实例1，vector排序：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">bool compare(Stu &amp;s1, Stu &amp;s2)&#123;</span><br><span class="line">    int flag &#x3D; false;</span><br><span class="line">    if(s1.sum !&#x3D; s2.sum) return s1.sum &gt; s2.sum;</span><br><span class="line">    else if(s1.de !&#x3D; s2.de) return s1.de &gt; s2.de;</span><br><span class="line">    else return s1.id &lt; s2.id;</span><br><span class="line"></span><br><span class="line">    return flag;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;省略其他代码， stus是一个vector数组</span><br><span class="line"></span><br><span class="line">for(int i &#x3D; 0; i &lt; 4; i++)&#123;</span><br><span class="line">    sort(stus[i].begin(), stus[i].end(), compare);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> 实例2，数组排序：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;students是长度为m的数组</span><br><span class="line">sort(students, students + m, compare);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>algorithm</code>库中可以使用的其他排序算法（见上表）</p>
+</li>
+<li><p>涉及到排序问题的关键在于怎样实现compare函数，通常根据题目的条件来实现相应的compare函数</p>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="http://du-jia.github.io/2020/03/06/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="ck7fnecnw00056ow72bro5mxu" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://du-jia.github.io/2020/03/06/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="ck7fnecnw00056ow72bro5mxu" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -280,8 +355,15 @@
         "dateCreated": "2020-03-06",
         "dateModified": "2020-03-06",
         "url": "http://Du-Jia.github.io/2020/03/06/算法学习笔记/",
-        "description": "",
-        "wordCount": 1
+        "description": "刷题笔记Sample Level
+排序
+
+B1015/A1062:
+  这是一道分类排序题，可以将成绩分成5个类别，最后一个类别不用输出。
+  思路一：将类别作为结构体的一个成员，将所有学生进行排序（快速排序算法），平均复杂度为：$O(NlogN)$。  思路二：分类存储每一类成绩，再分别对其排序。
+  超时问题：
+  最开始以为是因为排序算法的复杂度过高导致的超时，后经查阅其他人的博客发现，超时",
+        "wordCount": 489
     }
 </script>
 
@@ -305,7 +387,7 @@
                     <aside id="sidebar">
     <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
     <div class="sidebar-top">
-        <p>seguir:</p>
+        <p>follow:</p>
         <ul class="social-links">
             
                 
@@ -364,7 +446,7 @@
     
     
         <a href="/2020/03/06/word2vec%E6%BA%90%E7%A0%81%E7%90%86%E8%A7%A3/" id="article-nav-older" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">antic</strong>
+        <strong class="article-nav-caption">older</strong>
         <p class="article-nav-title">Word2Vec源码理解</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
@@ -501,7 +583,7 @@
             
                 
     <div class="widget-wrap widget-list">
-        <h3 class="widget-title">arxius</h3>
+        <h3 class="widget-title">archives</h3>
         <div class="widget">
             <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">5</span></li></ul>
         </div>
@@ -511,7 +593,7 @@
             
                 
     <div class="widget-wrap widget-list">
-        <h3 class="widget-title">etiquetes</h3>
+        <h3 class="widget-title">tags</h3>
         <div class="widget">
             <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/" rel="tag">NLP</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%B7%E9%A2%98/" rel="tag">刷题</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a><span class="tag-list-count">1</span></li></ul>
         </div>
@@ -521,7 +603,7 @@
             
                 
     <div class="widget-wrap widget-float">
-        <h3 class="widget-title">etiqueta cloud</h3>
+        <h3 class="widget-title">tag cloud</h3>
         <div class="widget tagcloud">
             <a href="/tags/NLP/" style="font-size: 15px;">NLP</a> <a href="/tags/%E5%88%B7%E9%A2%98/" style="font-size: 10px;">刷题</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">机器学习</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 20px;">笔记</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a>
         </div>
