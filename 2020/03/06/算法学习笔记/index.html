@@ -20,7 +20,7 @@
 <meta property="og:description" content="刷题笔记Sample Level 排序  B1015&#x2F;A1062:   这是一道分类排序题，可以将成绩分成5个类别，最后一个类别不用输出。   思路一：将类别作为结构体的一个成员，将所有学生进行排序（快速排序算法），平均复杂度为：$O(NlogN)$。  思路二：分类存储每一类成绩，再分别对其排序。   超时问题：   最开始以为是因为排序算法的复杂度过高导致的超时，后经查阅其他人的博客发现，超时">
 <meta property="og:locale" content="zh">
 <meta property="article:published_time" content="2020-03-06T03:56:57.000Z">
-<meta property="article:modified_time" content="2020-03-06T08:55:59.124Z">
+<meta property="article:modified_time" content="2020-03-08T15:37:20.289Z">
 <meta property="article:author" content="Du-Jia">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="算法">
@@ -213,43 +213,7 @@
 <li><p>使用库函数：<code>sort()</code>函数的使用方法</p>
 <p> 下面简单介绍sort()函数的使用方法：</p>
 <p> <code>sort()</code>函数包含在<code>algorithm</code>库中</p>
-<p> <strong>Sorting:</strong></p>
-<table>
-<thead>
-<tr>
-<th align="center">method name</th>
-<th align="center">function</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">sort</td>
-<td align="center">Sort elements in range (function template )</td>
-</tr>
-<tr>
-<td align="center">stable_sort</td>
-<td align="center">Sort elements preserving order of equivalents (function template )</td>
-</tr>
-<tr>
-<td align="center">partial_sort</td>
-<td align="center">Partially sort elements in range (function template )</td>
-</tr>
-<tr>
-<td align="center">partial_sort_copy</td>
-<td align="center">Copy and partially sort range (function template )</td>
-</tr>
-<tr>
-<td align="center">is_sorted</td>
-<td align="center">Check whether range is sorted (function template )</td>
-</tr>
-<tr>
-<td align="center">is_sorted_until</td>
-<td align="center">Find first unsorted element in range (function template )</td>
-</tr>
-<tr>
-<td align="center">nth_element</td>
-<td align="center">Sort element in range (function template )</td>
-</tr>
-</tbody></table>
+<p> <strong>Sorting:</strong><br> | method name | function |<br> | :—————-:|:—————:|<br> | sort |Sort elements in range (function template ) |<br> | stable_sort | Sort elements preserving order of equivalents (function template ) |<br> | partial_sort | Partially sort elements in range (function template )|<br> |partial_sort_copy|Copy and partially sort range (function template )|<br> |is_sorted | Check whether range is sorted (function template )|<br> | is_sorted_until| Find first unsorted element in range (function template )|<br> | nth_element|Sort element in range (function template )|</p>
 <p> <code>sort</code>的功能是对一个区间内的元素进行排序，默认非降序排序，可以通过自己实现compare函数控制排序。（不稳定排序，如果需要使用稳定排序，可以使用<code>stable_sort</code>函数进行排序）</p>
 <p> <code>sort(first, last, comp)</code>对$[first, last)$范围内的元素进行排序（左开右闭）</p>
 <p> <code>comp</code>参数是一个函数指针，这个函数应该返回一个<code>bool</code>值，sort函数根据bool值进行排序。</p>
@@ -257,15 +221,26 @@
 <p> <code>bool comp(Elem a, Elem b)</code>返回<code>true</code>, 则表示排序过程中，<code>a</code>应该排在<code>b</code>的<strong>前面</strong>。</p>
 <p> 实例1，vector排序：</p>
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">bool compare(Stu &amp;s1, Stu &amp;s2)&#123;</span><br><span class="line">    int flag &#x3D; false;</span><br><span class="line">    if(s1.sum !&#x3D; s2.sum) return s1.sum &gt; s2.sum;</span><br><span class="line">    else if(s1.de !&#x3D; s2.de) return s1.de &gt; s2.de;</span><br><span class="line">    else return s1.id &lt; s2.id;</span><br><span class="line"></span><br><span class="line">    return flag;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;省略其他代码， stus是一个vector数组</span><br><span class="line"></span><br><span class="line">for(int i &#x3D; 0; i &lt; 4; i++)&#123;</span><br><span class="line">    sort(stus[i].begin(), stus[i].end(), compare);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p> 实例2，数组排序：</p>
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;students是长度为m的数组</span><br><span class="line">sort(students, students + m, compare);</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><code>algorithm</code>库中可以使用的其他排序算法（见上表）</p>
 </li>
-<li><p>涉及到排序问题的关键在于怎样实现compare函数，通常根据题目的条件来实现相应的compare函数</p>
-</li>
+<li>涉及到排序问题的关键在于怎样实现compare函数，通常根据题目的条件来实现相应的compare函数</li>
 </ol>
+</li>
+<li><p>子问题：排名(Rank)</p>
+<p>排名问题的要点在于：如果存在相同分数的记录，排名应该保持相同，直到下一个分数出现才累计排名。</p>
+<p>e.g., 1，2，2，4，5，5，5，8</p>
+<ul>
+<li><p>A1012</p>
+<ul>
+<li>简单的模拟题，最开始被我弄得很复杂，最终参考题解的代码如下：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;stdlib.h&gt;</span><br><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;math.h&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int maxn&#x3D;2010;</span><br><span class="line">struct student&#123;</span><br><span class="line">    int id;</span><br><span class="line">    int grade[4];</span><br><span class="line">&#125;;</span><br><span class="line">char course[4]&#x3D;&#123;&#39;A&#39;,&#39;C&#39;,&#39;M&#39;,&#39;E&#39;&#125;;</span><br><span class="line">student stu[maxn];</span><br><span class="line">int RANK[10000000][4]&#x3D;&#123;0&#125;;</span><br><span class="line">int now;&#x2F;&#x2F;当前第几门课</span><br><span class="line">bool cmp(student a,student b)&#123;</span><br><span class="line">    return a.grade[now]&gt;b.grade[now];</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">    int N,M;</span><br><span class="line">    scanf(&quot;%d%d&quot;,&amp;N,&amp;M);</span><br><span class="line">    for(int i&#x3D;0;i&lt;N;i++)&#123;</span><br><span class="line">        scanf(&quot;%d%d%d%d&quot;,&amp;stu[i].id,&amp;stu[i].grade[1],&amp;stu[i].grade[2],&amp;stu[i].grade[3]);</span><br><span class="line">        stu[i].grade[0]&#x3D;round((stu[i].grade[1]+stu[i].grade[2]+stu[i].grade[3])&#x2F;3.0)+0.5;</span><br><span class="line">    &#125;</span><br><span class="line">    for(now&#x3D;0;now&lt;4;now++)&#123;</span><br><span class="line">        sort(stu,stu+N,cmp);</span><br><span class="line">        RANK[stu[0].id][now]&#x3D;1;</span><br><span class="line">        for(int i&#x3D;1;i&lt;N;i++)&#123;</span><br><span class="line">            if(stu[i].grade[now]&#x3D;&#x3D;stu[i-1].grade[now])&#123;</span><br><span class="line">                RANK[stu[i].id][now]&#x3D;RANK[stu[i-1].id][now];</span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                RANK[stu[i].id][now]&#x3D;i+1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    int query;</span><br><span class="line">    for(int i&#x3D;0;i&lt;M;i++)&#123;</span><br><span class="line">        scanf(&quot;%d&quot;,&amp;query);</span><br><span class="line">        if(RANK[query][0]&#x3D;&#x3D;0)&#123;</span><br><span class="line">            printf(&quot;N&#x2F;A\n&quot;);</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            int k&#x3D;0;</span><br><span class="line">            for(int j&#x3D;0;j&lt;4;j++)&#123;</span><br><span class="line">                if(RANK[query][j]&lt;RANK[query][k])&#123;</span><br><span class="line">                    k&#x3D;j;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            printf(&quot;%d %c\n&quot;,RANK[query][k],course[k]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    system(&quot;pause&quot;);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>A1025</li>
+</ul>
+<p>题目是合并几块无序数据，并且按照分数进行总的排序。最终输出总排名和局部排名。</p>
 </li>
 </ul>
 </li>
@@ -353,7 +328,7 @@
         "genre": "算法",
         "datePublished": "2020-03-06",
         "dateCreated": "2020-03-06",
-        "dateModified": "2020-03-06",
+        "dateModified": "2020-03-08",
         "url": "http://Du-Jia.github.io/2020/03/06/算法学习笔记/",
         "description": "刷题笔记Sample Level
 排序
@@ -363,7 +338,7 @@ B1015/A1062:
   思路一：将类别作为结构体的一个成员，将所有学生进行排序（快速排序算法），平均复杂度为：$O(NlogN)$。  思路二：分类存储每一类成绩，再分别对其排序。
   超时问题：
   最开始以为是因为排序算法的复杂度过高导致的超时，后经查阅其他人的博客发现，超时",
-        "wordCount": 489
+        "wordCount": 956
     }
 </script>
 
@@ -713,6 +688,13 @@ B1015/A1062:
 
     
     
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML.js"></script>
+
+    
 
     
 
@@ -724,5 +706,23 @@ B1015/A1062:
 
 
     </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>

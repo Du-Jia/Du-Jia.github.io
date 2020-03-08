@@ -21,7 +21,7 @@
 <meta property="og:locale" content="zh">
 <meta property="og:image" content="http://5b0988e595225.cdn.sohucs.com/images/20181119/20d8cc4a484242b2a67c535736747c9b.jpeg">
 <meta property="article:published_time" content="2020-03-04T07:23:09.000Z">
-<meta property="article:modified_time" content="2020-03-06T16:31:25.358Z">
+<meta property="article:modified_time" content="2020-03-06T16:50:43.342Z">
 <meta property="article:author" content="Du-Jia">
 <meta property="article:tag" content="NLP">
 <meta property="article:tag" content="笔记">
@@ -198,7 +198,6 @@
         <div class="article-entry" itemprop="articleBody">
             <h1 id="CS224n-课程学习笔记-1"><a href="#CS224n-课程学习笔记-1" class="headerlink" title="CS224n 课程学习笔记 1"></a>CS224n 课程学习笔记 1</h1><p>本节内容： Word2Vec</p>
 <a id="more"></a>
-
 <p><a href="https://www.bilibili.com/video/av61620135" target="_blank" rel="noopener">课程视频地址</a></p>
 <h2 id="课程内容要点"><a href="#课程内容要点" class="headerlink" title="课程内容要点"></a>课程内容要点</h2><ul>
 <li>理解Word Vector</li>
@@ -216,23 +215,23 @@
 <li>这种表示方式过于稀疏，计算量极大</li>
 <li>one-hot表示方式不能体现出单词之间的语义关系</li>
 </ol>
-<h3 id="基于SVD-Singular-Value-Decomposition-奇异值分解-的方法"><a href="#基于SVD-Singular-Value-Decomposition-奇异值分解-的方法" class="headerlink" title="基于SVD(Singular Value Decomposition, 奇异值分解) 的方法"></a>基于SVD(Singular Value Decomposition, 奇异值分解) 的方法</h3><p>基本思想：<br>通过统计单词共现(word co-occurrence)的次数形成一个巨大的共现矩阵(co-occurrrence matrix)，然后通过奇异值分解的方法降维，得到一个$|V| * k$的矩阵，每一行即为对应的word vector。</p>
+<h3 id="基于SVD-Singular-Value-Decomposition-奇异值分解-的方法"><a href="#基于SVD-Singular-Value-Decomposition-奇异值分解-的方法" class="headerlink" title="基于SVD(Singular Value Decomposition, 奇异值分解) 的方法"></a>基于SVD(Singular Value Decomposition, 奇异值分解) 的方法</h3><p>基本思想：<br>通过统计单词共现(word co-occurrence)的次数形成一个巨大的共现矩阵(co-occurrrence matrix)，然后通过奇异值分解的方法降维，得到一个$|V|\times{k}$的矩阵，每一行即为对应的word vector。</p>
 <p>求共现矩阵的两种方法：</p>
 <ol>
 <li>word-document matrix<ul>
 <li>矩阵的每行表示一个词汇表中的单词，每列表示一个文件</li>
-<li>扫描所有语料文件，每次单词$Wi$在document$Dj$中出现，则矩阵中相应元素$Mij ++$</li>
+<li>扫描所有语料文件，每次单词$Wi$在document$Dj$中出现，则矩阵中相应元素$M_{ij}$计数增加</li>
 </ul>
 </li>
 <li>window based co-occurrence matrix<ul>
 <li>和word-document maticx方法类似，每行的行向量最终对应单词的word vector，区别在于这里每列表示相应单词在每行所表示的单词的窗口范围内出现的次数。</li>
-<li>统计每个单词$Wj$出现在中心词$Wi$的窗口范围内的次数</li>
+<li>统计每个单词$W_j$出现在中心词$W_i$的窗口范围内的次数</li>
 <li>这里的重要参数是window size</li>
 </ul>
 </li>
 </ol>
-<p>SVD将共现矩阵分解为三个矩阵相乘的形式: $X_{|V| * |V|} = U_{|V| * |V|}S_{|V| * |V|}V_{|V| * |V|}$</p>
-<p>其中矩阵$S$是一个对角矩阵，通过取$S$矩阵中的$k$列与$U$最终得到word vector矩阵（$|V| * k$）</p>
+<p>SVD将共现矩阵分解为三个矩阵相乘的形式: $X_{|V|\times|V|} = U_{|V|\times|V|}S_{|V|\times|V|}V_{|V|\times|V|}$</p>
+<p>其中矩阵$S$是一个对角矩阵，通过取$S$矩阵中的$k$列与$U$最终得到word vector矩阵（$|V|\times{k}$）</p>
 <h3 id="基于迭代的方法-Word2Vec"><a href="#基于迭代的方法-Word2Vec" class="headerlink" title="基于迭代的方法: Word2Vec"></a>基于迭代的方法: Word2Vec</h3><p>思路：</p>
 <p>建立一个模型，这个模型通过训练最终可以在给出上下文的情况下对单词的概率进行编码。在这个模型里，通过上下文训练模型，而模型中的参数才是最终我们需要求取的所有word vector</p>
 <p>word2vec模型实际上有两种算法：</p>
@@ -250,9 +249,9 @@
 <p><img src="http://5b0988e595225.cdn.sohucs.com/images/20181119/20d8cc4a484242b2a67c535736747c9b.jpeg" alt="CBOW模型-图片来自网络，侵删"></p>
 <ul>
 <li>输入：$x_{1k}, x_{2k}, …, x_{ck}$, context的on-hot vector形式</li>
-<li>输入对应的权重矩阵： $W_{|V| * n}$，其中$n$是word vector的编码维数</li>
+<li>输入对应的权重矩阵： $W_{|V|\times{n}}$，其中$n$是word vector的编码维数</li>
 <li>输出：$y_j$：ont-hot vector</li>
-<li>对应权重矩阵：$W_{n * |V|}$</li>
+<li>对应权重矩阵：$W_{n\times|V|}$</li>
 </ul>
 <p>可以看到，可以得到两个Word Embedding矩阵(Word vector 和 Word Embedding可以换用)，一个对应上下文，一个对应中心词。是一个词在两个位置的向量。</p>
 <p><strong>深入理解</strong></p>
@@ -261,15 +260,15 @@
 <li>为对应的context生成对应的ont-hot向量作为输入$x$</li>
 <li>通过word vectors对输入进行编码(word embedding)$x * W_{input}$</li>
 <li>求其平均值，得到隐藏层的值$h$</li>
-<li>通过$W_{output}$评分：$z = h * W_{output}$</li>
+<li>通过$W_{output}$评分：$z = h\cdot{W_{output}}$</li>
 <li>把评分转化为概率分布$\hat{y} = softmax(z)$</li>
 <li>把生成的概率转化为one-hot向量，与实际的中心词$y_j$比较</li>
 </ol>
 <p>目标函数：</p>
 <p>这里采用交叉熵函数(cross-entropy)计算预测分布和实际分布的差距</p>
-<p>$$<br>H(y,\hat{y}) = -\sum_{j=1}^{|V|}y_j\log{\hat{y_j}}<br>$$</p>
-<h4 id="Skip-Gram"><a href="#Skip-Gram" class="headerlink" title="Skip-Gram"></a>Skip-Gram</h4><p>输入中心词，预测上下文</p>
-<p><img src="http://img5.imgtn.bdimg.com/it/u=1876034502,4074599079&fm=26&gp=0.jpg" alt="Skip-Gram模型-图片来自网络，侵删"></p>
+<script type="math/tex; mode=display">
+H(y,\hat{y}) = -\sum_{j=1}^{|V|}y_j\log{\hat{y_j}}</script><h4 id="Skip-Gram"><a href="#Skip-Gram" class="headerlink" title="Skip-Gram"></a>Skip-Gram</h4><p>输入中心词，预测上下文</p>
+<p><img src="http://img5.imgtn.bdimg.com/it/u=1876034502,4074599079&amp;fm=26&amp;gp=0.jpg" alt="Skip-Gram模型-图片来自网络，侵删"></p>
 <h2 id="Assignment-1"><a href="#Assignment-1" class="headerlink" title="Assignment 1"></a>Assignment 1</h2><p>简单难度，主要目的是对两种方法有一个直观的理解</p>
 <h2 id="个人体会"><a href="#个人体会" class="headerlink" title="个人体会"></a>个人体会</h2>
         </div>
@@ -357,7 +356,7 @@
         "dateModified": "2020-03-07",
         "url": "http://Du-Jia.github.io/2020/03/04/CS224N-学习笔记-Lecture-1-2-Word2Vec/",
         "description": "CS224n 课程学习笔记 1本节内容： Word2Vec",
-        "wordCount": 135
+        "wordCount": 118
     }
 </script>
 
@@ -717,6 +716,13 @@
 
     
     
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML.js"></script>
+
+    
 
     
 
@@ -728,5 +734,23 @@
 
 
     </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>
