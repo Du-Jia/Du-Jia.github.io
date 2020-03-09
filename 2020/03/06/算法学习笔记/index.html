@@ -20,7 +20,7 @@
 <meta property="og:description" content="刷题笔记Sample Level 排序  B1015&#x2F;A1062:   这是一道分类排序题，可以将成绩分成5个类别，最后一个类别不用输出。   思路一：将类别作为结构体的一个成员，将所有学生进行排序（快速排序算法），平均复杂度为：$O(NlogN)$。  思路二：分类存储每一类成绩，再分别对其排序。   超时问题：   最开始以为是因为排序算法的复杂度过高导致的超时，后经查阅其他人的博客发现，超时">
 <meta property="og:locale" content="zh">
 <meta property="article:published_time" content="2020-03-06T03:56:57.000Z">
-<meta property="article:modified_time" content="2020-03-08T15:37:20.289Z">
+<meta property="article:modified_time" content="2020-03-09T14:36:49.517Z">
 <meta property="article:author" content="Du-Jia">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="算法">
@@ -237,11 +237,24 @@
 <ul>
 <li>简单的模拟题，最开始被我弄得很复杂，最终参考题解的代码如下：</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;stdlib.h&gt;</span><br><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;math.h&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int maxn&#x3D;2010;</span><br><span class="line">struct student&#123;</span><br><span class="line">    int id;</span><br><span class="line">    int grade[4];</span><br><span class="line">&#125;;</span><br><span class="line">char course[4]&#x3D;&#123;&#39;A&#39;,&#39;C&#39;,&#39;M&#39;,&#39;E&#39;&#125;;</span><br><span class="line">student stu[maxn];</span><br><span class="line">int RANK[10000000][4]&#x3D;&#123;0&#125;;</span><br><span class="line">int now;&#x2F;&#x2F;当前第几门课</span><br><span class="line">bool cmp(student a,student b)&#123;</span><br><span class="line">    return a.grade[now]&gt;b.grade[now];</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">    int N,M;</span><br><span class="line">    scanf(&quot;%d%d&quot;,&amp;N,&amp;M);</span><br><span class="line">    for(int i&#x3D;0;i&lt;N;i++)&#123;</span><br><span class="line">        scanf(&quot;%d%d%d%d&quot;,&amp;stu[i].id,&amp;stu[i].grade[1],&amp;stu[i].grade[2],&amp;stu[i].grade[3]);</span><br><span class="line">        stu[i].grade[0]&#x3D;round((stu[i].grade[1]+stu[i].grade[2]+stu[i].grade[3])&#x2F;3.0)+0.5;</span><br><span class="line">    &#125;</span><br><span class="line">    for(now&#x3D;0;now&lt;4;now++)&#123;</span><br><span class="line">        sort(stu,stu+N,cmp);</span><br><span class="line">        RANK[stu[0].id][now]&#x3D;1;</span><br><span class="line">        for(int i&#x3D;1;i&lt;N;i++)&#123;</span><br><span class="line">            if(stu[i].grade[now]&#x3D;&#x3D;stu[i-1].grade[now])&#123;</span><br><span class="line">                RANK[stu[i].id][now]&#x3D;RANK[stu[i-1].id][now];</span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                RANK[stu[i].id][now]&#x3D;i+1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    int query;</span><br><span class="line">    for(int i&#x3D;0;i&lt;M;i++)&#123;</span><br><span class="line">        scanf(&quot;%d&quot;,&amp;query);</span><br><span class="line">        if(RANK[query][0]&#x3D;&#x3D;0)&#123;</span><br><span class="line">            printf(&quot;N&#x2F;A\n&quot;);</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            int k&#x3D;0;</span><br><span class="line">            for(int j&#x3D;0;j&lt;4;j++)&#123;</span><br><span class="line">                if(RANK[query][j]&lt;RANK[query][k])&#123;</span><br><span class="line">                    k&#x3D;j;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            printf(&quot;%d %c\n&quot;,RANK[query][k],course[k]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    system(&quot;pause&quot;);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>A1025</li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;stdlib.h&gt;</span><br><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;math.h&gt;</span><br><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int maxn&#x3D;2010;</span><br><span class="line">struct student&#123;</span><br><span class="line">    int id;</span><br><span class="line">    int grade[4];</span><br><span class="line">&#125;;</span><br><span class="line">char course[4]&#x3D;&#123;&#39;A&#39;,&#39;C&#39;,&#39;M&#39;,&#39;E&#39;&#125;;</span><br><span class="line">student stu[maxn];</span><br><span class="line">int RANK[10000000][4]&#x3D;&#123;0&#125;;</span><br><span class="line">int now;&#x2F;&#x2F;当前第几门课</span><br><span class="line">bool cmp(student a,student b)&#123;</span><br><span class="line">    return a.grade[now]&gt;b.grade[now];</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">    int N,M;</span><br><span class="line">    scanf(&quot;%d%d&quot;,&amp;N,&amp;M);</span><br><span class="line">    for(int i&#x3D;0;i&lt;N;i++)&#123;</span><br><span class="line">        scanf(&quot;%d%d%d%d&quot;,&amp;stu[i].id,&amp;stu[i].grade[1],&amp;stu[i].grade[2],&amp;stu[i].grade[3]);</span><br><span class="line">        stu[i].grade[0]&#x3D;round((stu[i].grade[1]+stu[i].grade[2]+stu[i].grade[3])&#x2F;3.0)+0.5;</span><br><span class="line">    &#125;</span><br><span class="line">    for(now&#x3D;0;now&lt;4;now++)&#123;</span><br><span class="line">        sort(stu,stu+N,cmp);</span><br><span class="line">        RANK[stu[0].id][now]&#x3D;1;</span><br><span class="line">        for(int i&#x3D;1;i&lt;N;i++)&#123;</span><br><span class="line">            if(stu[i].grade[now]&#x3D;&#x3D;stu[i-1].grade[now])&#123;</span><br><span class="line">                RANK[stu[i].id][now]&#x3D;RANK[stu[i-1].id][now];</span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                RANK[stu[i].id][now]&#x3D;i+1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    int query;</span><br><span class="line">    for(int i&#x3D;0;i&lt;M;i++)&#123;</span><br><span class="line">        scanf(&quot;%d&quot;,&amp;query);</span><br><span class="line">        if(RANK[query][0]&#x3D;&#x3D;0)&#123;</span><br><span class="line">            printf(&quot;N&#x2F;A\n&quot;);</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            int k&#x3D;0;</span><br><span class="line">            for(int j&#x3D;0;j&lt;4;j++)&#123;</span><br><span class="line">                if(RANK[query][j]&lt;RANK[query][k])&#123;</span><br><span class="line">                    k&#x3D;j;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            printf(&quot;%d %c\n&quot;,RANK[query][k],course[k]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    system(&quot;pause&quot;);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>A1025</p>
+</li>
 </ul>
 <p>题目是合并几块无序数据，并且按照分数进行总的排序。最终输出总排名和局部排名。</p>
 </li>
+</ul>
+</li>
+<li><p>简单Hash问题</p>
+<ul>
+<li>常用思路:<ul>
+<li>ASCII码散列，处理字符串相减等问题</li>
+<li>检查某些项是否出现</li>
+<li>两数相加问题</li>
+</ul>
+</li>
+<li>简单问题中，可以通过使用散列的方法，降低时间复杂度。重点是在这个过程中，应该要考虑好散列表的大小，确保数据完全散列到表内。</li>
 </ul>
 </li>
 </ul>
@@ -328,7 +341,7 @@
         "genre": "算法",
         "datePublished": "2020-03-06",
         "dateCreated": "2020-03-06",
-        "dateModified": "2020-03-08",
+        "dateModified": "2020-03-09",
         "url": "http://Du-Jia.github.io/2020/03/06/算法学习笔记/",
         "description": "刷题笔记Sample Level
 排序
@@ -706,23 +719,5 @@ B1015/A1062:
 
 
     </div>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<!--
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
--->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 </html>
