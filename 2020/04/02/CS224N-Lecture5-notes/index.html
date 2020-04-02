@@ -6,18 +6,24 @@
     
 
     
-    <title>Tag: Python | Du-Jia&#39;s Blog</title>
+    <title>CS224N-Lecture5-notes | Du-Jia&#39;s Blog</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description" content="Make the world difference">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Du-Jia&#39;s Blog">
-<meta property="og:url" content="http://du-jia.github.io/tags/Python/index.html">
+    <meta name="keywords" content="NLP,笔记" />
+    
+    <meta name="description" content="CS224N Assignment 3 Neural Dependency Parser需要理清楚的细节问题网络结构  输入数据的形式 原始输入数据分为3个部分：Word，POS，Label（单词，词性标签，弧的类型）。处理后的输入数据$[x^w, x^t, x^l]$ 其中word是按照一定的规则从数据中抽取的特征，包含18个词（stack，buffer栈顶6个 + stack栈顶2个单词的最左">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CS224N-Lecture5-notes">
+<meta property="og:url" content="http://du-jia.github.io/2020/04/02/CS224N-Lecture5-notes/index.html">
 <meta property="og:site_name" content="Du-Jia&#39;s Blog">
-<meta property="og:description" content="Make the world difference">
+<meta property="og:description" content="CS224N Assignment 3 Neural Dependency Parser需要理清楚的细节问题网络结构  输入数据的形式 原始输入数据分为3个部分：Word，POS，Label（单词，词性标签，弧的类型）。处理后的输入数据$[x^w, x^t, x^l]$ 其中word是按照一定的规则从数据中抽取的特征，包含18个词（stack，buffer栈顶6个 + stack栈顶2个单词的最左">
 <meta property="og:locale" content="zh">
+<meta property="article:published_time" content="2020-04-02T15:11:06.000Z">
+<meta property="article:modified_time" content="2020-04-02T15:13:59.568Z">
 <meta property="article:author" content="Du-Jia">
+<meta property="article:tag" content="NLP">
+<meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="summary">
     
 
@@ -143,92 +149,206 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    <i class="icon fa fa-tag"></i>Tag: <em>Python</em>
+    <a class="page-title-link" href="/categories/CS224N%E7%AC%94%E8%AE%B0/">CS224N笔记</a>
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            
-
-    
-    
+                            <article id="post-CS224N-Lecture5-notes" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-        
-        <section class="archives-wrap">
-            <div class="archive-year-wrap">
-                <a href="/archives/2020" class="archive-year"><i class="icon fa fa-calendar-o"></i>2020</a>
-            </div>
-            <div class="archives">
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2020/03/13/numpy%E5%9F%BA%E7%A1%80/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://du-jia.github.io/2020/03/13/numpy%E5%9F%BA%E7%A1%80/">0</span>
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/%E5%BA%93/">库</a>
-            </div>
-            <div class="date"><time datetime="2020-03-13T13:37:32.000Z" itemprop="datePublished">2020-03-13</time></div>
-        </div>
-        
+            <header class="article-header">
+                
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2020/03/13/numpy%E5%9F%BA%E7%A1%80/">numpy基础</a>
+        CS224N-Lecture5-notes
         </h1>
     
 
-        <p class="article-excerpt">
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+      <i class="fa fa-calendar"></i>
+      <a href="/2020/04/02/CS224N-Lecture5-notes/" class="article-date">
+         <time datetime="2020-04-02T15:11:06.000Z" itemprop="datePublished">2020-04-02</time>
+      </a>
+    </div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/NLP/" rel="tag">NLP</a>, <a class="tag-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h1 id="CS224N-Assignment-3-Neural-Dependency-Parser"><a href="#CS224N-Assignment-3-Neural-Dependency-Parser" class="headerlink" title="CS224N Assignment 3 Neural Dependency Parser"></a>CS224N Assignment 3 Neural Dependency Parser</h1><h2 id="需要理清楚的细节问题"><a href="#需要理清楚的细节问题" class="headerlink" title="需要理清楚的细节问题"></a>需要理清楚的细节问题</h2><p>网络结构</p>
+<ol>
+<li>输入数据的形式<ul>
+<li>原始输入数据分为3个部分：Word，POS，Label（单词，词性标签，弧的类型）。处理后的输入数据$[x^w, x^t, x^l]$</li>
+<li>其中word是按照一定的规则从数据中抽取的特征，包含18个词（stack，buffer栈顶6个 + stack栈顶2个单词的最左2个，最右2个 + stack栈顶两个元素的最左，最右的最左最右单词，共计4个）</li>
+<li>3个特征都需要Embedding</li>
+</ul>
+</li>
+<li>Embedding是从已经训练好的文件中加载的还是训练过程中同步训练出来的？<ul>
+<li>使用的是预训练好的Embedding矩阵，位置<code>./data/en_cw.txt</code></li>
+</ul>
+</li>
+<li>各层模型对数据类型的具体要求<ul>
+<li><strong>存疑</strong></li>
+</ul>
+</li>
+<li>mini_batch的问题，怎样划分mini_batch,每个batch的数据是同时输入做训练还是batch内部有区别<ul>
+<li>针对本作业：minibatch的划分是为了按照批次处理数据，由于句子的长度不同，需要处理的步数不同，因此每个批次的数据不是按照固定的步骤数生成，而是每批次数据都需要等到该批次数据全部解析完。</li>
+<li>其他：这里用到的参数是batch_size, 那么数据一共能分成<code>dataset_size / batch_szie</code>向下取整个batch</li>
+</ul>
+</li>
+<li>loss值的计算，这里用的是softmax，Pytorch中不同的损失值的计算的输入，输出，对数据类型的要求是什么，形状是什么<ul>
+<li>这里的输出对应transition的3种类型，是一个1*3的向量，每个元素对应该类别的概率。因此最终采用交叉熵计算loss值。</li>
+</ul>
+</li>
+<li>UAS的计算方式。神经网络预测出的结果，最终是通过什么方式评估，量化并得到最终的评分的，标注好的数据集是什么形式<ul>
+<li>Unlabeled attachment score (UAS) = head</li>
+<li>也就是说UAS只需要关注弧的指向是否正确，而不关注弧的标签是否正确。因此，与之对应的：LAS（Labeled attachment score）两者都关注</li>
+</ul>
+</li>
+<li>tqdm进度条的使用方法</li>
+<li>dropout的概率参数是指的保留的神经元数目还是指的丢弃的神经元数目。<ul>
+<li>dropout：训练的时候使用，随机把隐含层的单元设为0(每个批次drop不同的单元)，然后将隐含层和一个常数$r$相乘得到$h_{drop}$。这个常数使得$h_{drop}$的期望和$h$的期望相同</li>
+<li>dropout层的目的是防止过拟合</li>
+</ul>
+</li>
+<li>dropout层是一个单独的层还是仅仅是作用于隐含层上的一个函数<ul>
+<li>是一个单独的层，只用于训练的时候，为了防止过拟合。（因此一般加在全连接层后面）</li>
+<li>drop prop的意义是隐含层的单元有drop prop的概率会被”drop“</li>
+</ul>
+</li>
+<li>Adam算法的思路回顾</li>
+</ol>
+<h2 id="收获"><a href="#收获" class="headerlink" title="收获"></a>收获</h2><ol>
+<li>对CS224N的第5课有了更深入的理解</li>
+<li>实际使用PyTorch搭建了神经网络，对这个问题有所了解了</li>
+<li>更深地理解了从<code>原始数据-&gt;特征抽取-&gt;嵌入-&gt;训练-&gt;验证</code>这个过程</li>
+<li>理解了每次课讲的<code>评估</code>这个部分</li>
+</ol>
+
+        </div>
+        <footer class="article-footer">
             
 
 
-How to use numpy
 
+    <a data-url="http://du-jia.github.io/2020/04/02/CS224N-Lecture5-notes/" data-id="ck8iwghjl0000tgw7de2b8one" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
 
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
 
+            if ($('#' + id).length) {
+                box = $('#' + id);
 
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
 
+              box = $(html);
 
+              $('body').append(box);
+            }
 
-    /*!
-*
-* Twitter Bootstrap
-*
-*/
-/*!
- * Bootstrap v3.3.7 (http://getbootstrap.com)
- * Copyright 2011-2016 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/boot
-        </p>
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
     </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Du-Jia"
+        },
+        "headline": "CS224N-Lecture5-notes",
+        "image": "http://Du-Jia.github.io",
+        "keywords": "NLP 笔记",
+        "genre": "CS224N笔记",
+        "datePublished": "2020-04-02",
+        "dateCreated": "2020-04-02",
+        "dateModified": "2020-04-02",
+        "url": "http://Du-Jia.github.io/2020/04/02/CS224N-Lecture5-notes/",
+        "description": "CS224N Assignment 3 Neural Dependency Parser需要理清楚的细节问题网络结构
+
+输入数据的形式
+原始输入数据分为3个部分：Word，POS，Label（单词，词性标签，弧的类型）。处理后的输入数据$[x^w, x^t, x^l]$
+其中word是按照一定的规则从数据中抽取的特征，包含18个词（stack，buffer栈顶6个 + stack栈顶2个单词的最左",
+        "wordCount": 41
+    }
+</script>
+
 </article>
+
+    <section id="comments">
     
-        </div>
-    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+    </div>
 
 
-    </div></section>
+    
+    </section>
 
 
 
@@ -290,6 +410,19 @@ How to use numpy
             
         </ul>
     </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2020/03/31/PyTorch-Learn/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">older</strong>
+        <p class="article-nav-title">PyTorch Learn</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         
@@ -500,11 +633,13 @@ How to use numpy
     var disqus_shortname = 'hexo-theme-hueman';
     
     
+    var disqus_url = 'http://du-jia.github.io/2020/04/02/CS224N-Lecture5-notes/';
+    
     (function() {
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
     </script>
