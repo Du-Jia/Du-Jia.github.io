@@ -6,19 +6,28 @@
     
 
     
-    <title>Tag: 机器学习 | Du-Jia&#39;s Blog</title>
+    <title>Deep Learning Notes - Week 1 | Du-Jia&#39;s Blog</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="description" content="Make the world difference">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Du-Jia&#39;s Blog">
-<meta property="og:url" content="http://du-jia.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/index.html">
+    <meta name="keywords" content="笔记,机器学习,深度学习" />
+    
+    <meta name="description" content="NLP入门计划第一周 - 笔记内容 了解感知机&#x2F;多层感知机(MLP) 了解前向传播，反向传播，微积分， 偏导的基本知识 梯度下降，学习率，梯度裁剪 了解常用的激活函数，从$tanh$到$gelu$ 了解loss function, cross-entropy, 平方差  笔记由于之前有过一点深度学习基础，不算是完全从零开始学起，此次做笔记的目的在于加深对深度学习基础知识的了解，特别是补了一下一些数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Deep Learning Notes - Week 1">
+<meta property="og:url" content="http://du-jia.github.io/2020/08/05/Deep-Learning-Notes-Week-1/index.html">
 <meta property="og:site_name" content="Du-Jia&#39;s Blog">
-<meta property="og:description" content="Make the world difference">
+<meta property="og:description" content="NLP入门计划第一周 - 笔记内容 了解感知机&#x2F;多层感知机(MLP) 了解前向传播，反向传播，微积分， 偏导的基本知识 梯度下降，学习率，梯度裁剪 了解常用的激活函数，从$tanh$到$gelu$ 了解loss function, cross-entropy, 平方差  笔记由于之前有过一点深度学习基础，不算是完全从零开始学起，此次做笔记的目的在于加深对深度学习基础知识的了解，特别是补了一下一些数">
 <meta property="og:locale" content="zh">
+<meta property="og:image" content="https://img2018.cnblogs.com/i-beta/1473572/202002/1473572-20200213100738646-47348751.png">
+<meta property="article:published_time" content="2020-08-05T13:09:21.000Z">
+<meta property="article:modified_time" content="2020-08-05T14:39:15.098Z">
 <meta property="article:author" content="Du-Jia">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="机器学习">
+<meta property="article:tag" content="深度学习">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img2018.cnblogs.com/i-beta/1473572/202002/1473572-20200213100738646-47348751.png">
     
 
     
@@ -143,144 +152,263 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    <i class="icon fa fa-tag"></i>Tag: <em>机器学习</em>
+    <a class="page-title-link" href="/categories/NLP%E5%85%A5%E9%97%A8%E8%AE%A1%E5%88%92-%E7%AC%94%E8%AE%B0/">NLP入门计划-笔记</a>
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            
-
-    
-    
+                            <article id="post-Deep-Learning-Notes-Week-1" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-        
-        <section class="archives-wrap">
-            <div class="archive-year-wrap">
-                <a href="/archives/2020" class="archive-year"><i class="icon fa fa-calendar-o"></i>2020</a>
-            </div>
-            <div class="archives">
-    
-    
-    
-        <div class="article-row">
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2020/08/05/Deep-Learning-Notes-Week-1/" class="thumbnail">
-    
-    
-        <span style="background-image:url(https://img2018.cnblogs.com/i-beta/1473572/202002/1473572-20200213100738646-47348751.png)" alt="Deep Learning Notes - Week 1" class="thumbnail-image"></span>
-    
-    
-        
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://du-jia.github.io/2020/08/05/Deep-Learning-Notes-Week-1/">0</span>
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/NLP%E5%85%A5%E9%97%A8%E8%AE%A1%E5%88%92-%E7%AC%94%E8%AE%B0/">NLP入门计划-笔记</a>
-            </div>
-            <div class="date"><time datetime="2020-08-05T13:09:21.000Z" itemprop="datePublished">2020-08-05</time></div>
-        </div>
-        
+            <header class="article-header">
+                
     
         <h1 class="article-title" itemprop="name">
-        <a href="/2020/08/05/Deep-Learning-Notes-Week-1/">Deep Learning Notes - Week 1</a>
+        Deep Learning Notes - Week 1
         </h1>
     
 
-        <p class="article-excerpt">
-            NLP入门计划第一周 - 笔记内容
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+      <i class="fa fa-calendar"></i>
+      <a href="/2020/08/05/Deep-Learning-Notes-Week-1/" class="article-date">
+         <time datetime="2020-08-05T13:09:21.000Z" itemprop="datePublished">2020-08-05</time>
+      </a>
+    </div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a>, <a class="tag-link" href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag">深度学习</a>, <a class="tag-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h1 id="NLP入门计划第一周-笔记"><a href="#NLP入门计划第一周-笔记" class="headerlink" title="NLP入门计划第一周 - 笔记"></a>NLP入门计划第一周 - 笔记</h1><h2 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h2><ol>
+<li>了解感知机/多层感知机(MLP)</li>
+<li>了解<strong>前向传播</strong>，<strong>反向传播</strong>，<strong>微积分</strong>， <strong>偏导</strong>的基本知识</li>
+<li>梯度下降，学习率，梯度裁剪</li>
+<li>了解常用的激活函数，从$tanh$到$gelu$</li>
+<li>了解<strong>loss function</strong>, <strong>cross-entropy</strong>, <strong>平方差</strong></li>
+</ol>
+<h2 id="笔记"><a href="#笔记" class="headerlink" title="笔记"></a>笔记</h2><p>由于之前有过一点深度学习基础，不算是完全从零开始学起，此次做笔记的目的在于加深对深度学习基础知识的了解，特别是补了一下一些数学上的理论知识。经验浅薄，有所疏漏在所难免。</p>
+<h3 id="感知机-Perceptron"><a href="#感知机-Perceptron" class="headerlink" title="感知机(Perceptron)"></a>感知机(Perceptron)</h3><p>感知机用于线性可分数据的二分类任务，基本思想是通过求解能够划分两类数据的直线或者超平面以达到分类的目的。</p>
+<p>按照《统计学习方法》一书的介绍，下面从<strong>模型</strong>，<strong>策略</strong>，<strong>算法</strong>三块来介绍。</p>
+<ol>
+<li><p>模型</p>
+<p> 感知机可以表示为如下形式:</p>
+<script type="math/tex; mode=display">f(x) = sign(wx + b)</script><p> 即一个空间上的超平面。其中$w$为该超平面的斜率，$b$为该超平面的截距。</p>
+<p> 最终学习的目标就是学习到一个能够把数据点分到该朝平面两侧的超平面。</p>
+</li>
+<li><p>学习策略</p>
+<ul>
+<li><p>误分类点：</p>
+<p>  误分类点即被超平面错误分类的点，其$f(x)$值和实际的标签$y$恰好相反</p>
+<p>  误分类点可以提供修正模型的数据</p>
+</li>
+<li><p>损失函数：</p>
+<p>  即误分类点到超平面的总距离，最终的目标就是让该值尽可能小</p>
+<p>  损失函数表示如下：</p>
+<script type="math/tex; mode=display">-\dfrac{1}{\|w\|}\displaystyle\sum_{x_i\in M}|w\cdot{x_i}+{b}|</script></li>
+</ul>
+</li>
+<li><p>训练算法</p>
+<p> 随机梯度下降</p>
+<p> 思想：随机初始化超平面，<strong>每次</strong>随机选择<strong>一个</strong>误分类点使超平面梯度下降，不断重复，直到所有点被正确分类或者损失函数达到一个<strong>阈值</strong>（如果是线性不可分的数据是不可能求出能正确分类的超平面的）</p>
+</li>
+</ol>
+<h3 id="多层感知机-multilayer-perceptron"><a href="#多层感知机-multilayer-perceptron" class="headerlink" title="多层感知机(multilayer perceptron)"></a>多层感知机(multilayer perceptron)</h3><p>$多层感知机(MLP) = 人工神经网络(ANN)$</p>
+<p>单层感知机只能处理线性可分的数据，因此遇到更复杂的数据时，感知机就没有作用了。</p>
+<p>多层感知机的结构如下图所示（这里使用了一张别人博客中的图片，<a href="https://www.cnblogs.com/jaww/p/12302543.html" target="_blank" rel="noopener">点击此处</a>跳转到博客原文）：</p>
+<p><img src="https://img2018.cnblogs.com/i-beta/1473572/202002/1473572-20200213100738646-47348751.png" alt="多层感知机"></p>
+<p>如上图所示，多层感知机其实就是一个全连接的神经网络。上图所示为一个含一层隐含层的网络。这里的$h_1 = w_1x + b$实际上就是一个感知机，多个感知机层叠到一起，构成了一个多层感知机。</p>
+<p>但是，如果隐藏层的单元$h_1, h_2, …, h_n$如果直接输入到下一层，那么该多层感知机实际上仍然只能处理线性可能的数据，也即是说，仍然等价于一个单层的感知机，只不过参数更多更复杂而已。要使其能够处理非线性可分的数据，必须加入激活函数（引入非线性），这时隐含层的单元值有所变化，下面以$h_1$为例：</p>
+<script type="math/tex; mode=display">h_1 = sigmoid(w_1x + b)</script><p>这样的网络，才是一个真正的多层感知机。</p>
+<h3 id="前向传播-forward-propagation"><a href="#前向传播-forward-propagation" class="headerlink" title="前向传播(forward propagation)"></a>前向传播(forward propagation)</h3><p>如前节，按照图中的描述，输入层数据$X$经过计算可以得到隐含层数据$H$，再由隐含层数据经过计算得到输出层的数据$O$，这样一个过程，就是前向传播。</p>
+<h3 id="反向传播-backpropagation"><a href="#反向传播-backpropagation" class="headerlink" title="反向传播(backpropagation)"></a>反向传播(backpropagation)</h3><p>模型的训练过程即是求解<strong>目标函数</strong>最优值的过程。（目标函数即是代价函数，用于衡量训练结果和实际标签的差异）</p>
+<p>反向传播即是通过<strong>梯度下降</strong>方法，从最后一层开始，使用每一层的梯度值逐层更新每一层的参数值，最终不断逼近最优解（可能是局部最优）</p>
+<h3 id="学习率"><a href="#学习率" class="headerlink" title="学习率"></a>学习率</h3><p>每次更新的幅度大小，$0 &lt;= lr &lt;= 1$</p>
+<h3 id="梯度消失和梯度爆炸"><a href="#梯度消失和梯度爆炸" class="headerlink" title="梯度消失和梯度爆炸"></a>梯度消失和梯度爆炸</h3><p>当函数的偏导值接近0，会出现梯度消失（即该参数无法通过梯度进行更新）。梯度消失和激活函数的选取以及网络结构有关。</p>
+<p><strong>梯度爆炸的原因暂时还未理解，后续补坑。</strong></p>
+<h3 id="梯度裁剪"><a href="#梯度裁剪" class="headerlink" title="梯度裁剪"></a>梯度裁剪</h3><p>可以防止梯度爆炸问题发生</p>
+<h3 id="激活函数"><a href="#激活函数" class="headerlink" title="激活函数"></a>激活函数</h3><p>常用激活函数及其导数</p>
+<ol>
+<li>sigmoid<ul>
+<li>原函数<script type="math/tex; mode=display">sigmoid(x)=\dfrac{1}{1+e^{-x}}</script></li>
+<li>导数<script type="math/tex; mode=display">sigmoid(x)^{'}=sigmoid(x)(1-sigmoid(x))</script></li>
+</ul>
+</li>
+<li>tanh<ul>
+<li>原函数<script type="math/tex; mode=display">tanh(x)=\dfrac{e^x-e^{-x}}{e^x+e^{-x}}=2sigmoid(2x)-1</script></li>
+<li>导数<script type="math/tex; mode=display">tanh(x)^{'}=1-tanh(x)^2</script></li>
+</ul>
+</li>
+<li>ReLU(线性整流单元)<ul>
+<li>原函数<script type="math/tex; mode=display">ReLU(x)=
+  \begin{1}
+  \begin{2}</script></li>
+<li>导数</li>
+</ul>
+</li>
+<li>leakly ReLU<ul>
+<li>原函数</li>
+<li>导数</li>
+</ul>
+</li>
+<li>ELU<ul>
+<li>原函数</li>
+<li>导数</li>
+</ul>
+</li>
+<li>SELU<ul>
+<li>原函数</li>
+<li>导数</li>
+</ul>
+</li>
+<li>GELU<ul>
+<li>原函数</li>
+<li>导数</li>
+</ul>
+</li>
+<li>softmax<ul>
+<li>原函数</li>
+<li>导数</li>
+</ul>
+</li>
+<li>Maxout<ul>
+<li>原函数</li>
+<li>导数</li>
+</ul>
+</li>
+</ol>
+<h3 id="loss-fuction"><a href="#loss-fuction" class="headerlink" title="loss fuction"></a>loss fuction</h3><ul>
+<li><p>0-1 损失</p>
+</li>
+<li><p>平方损失</p>
+</li>
+</ul>
+<h3 id="交叉熵"><a href="#交叉熵" class="headerlink" title="交叉熵"></a>交叉熵</h3>
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://du-jia.github.io/2020/08/05/Deep-Learning-Notes-Week-1/" data-id="ckdhha3o10000wcw74o1y4u19" class="article-share-link"><i class="fa fa-share"></i>Partager</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Du-Jia"
+        },
+        "headline": "Deep Learning Notes - Week 1",
+        "image": "http://Du-Jia.github.iohttps://img2018.cnblogs.com/i-beta/1473572/202002/1473572-20200213100738646-47348751.png",
+        "keywords": "笔记 机器学习 深度学习",
+        "genre": "NLP入门计划-笔记",
+        "datePublished": "2020-08-05",
+        "dateCreated": "2020-08-05",
+        "dateModified": "2020-08-05",
+        "url": "http://Du-Jia.github.io/2020/08/05/Deep-Learning-Notes-Week-1/",
+        "description": "NLP入门计划第一周 - 笔记内容
 了解感知机/多层感知机(MLP)
 了解前向传播，反向传播，微积分， 偏导的基本知识
 梯度下降，学习率，梯度裁剪
 了解常用的激活函数，从$tanh$到$gelu$
 了解loss function, cross-entropy, 平方差
 
-笔记由于之前有过一点深度学习基础，不算是完全从零开始学起，此次做笔记的目的在于加深对深度学习基础知识的了解，特别是补了一下一些数
-        </p>
-    </div>
+笔记由于之前有过一点深度学习基础，不算是完全从零开始学起，此次做笔记的目的在于加深对深度学习基础知识的了解，特别是补了一下一些数",
+        "wordCount": 129
+    }
+</script>
+
 </article>
-    
 
-    
-    
-    
-    
-        <article class="article article-summary">
-    <div class="article-summary-inner">
-        
-        <a href="/2020/03/04/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
+    <section id="comments">
     
         
-<span class="comment-counter">
-    <i class="fa fa-comments-o"></i>
-    
-        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="http://du-jia.github.io/2020/03/04/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/">0</span>
-    
-</span>
-
-
-    
-</a>
-
-        
-        <div class="article-meta">
-            <div class="category">
-            <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
-            </div>
-            <div class="date"><time datetime="2020-03-04T12:00:00.000Z" itemprop="datePublished">2020-03-04</time></div>
-        </div>
-        
-    
-        <h1 class="article-title" itemprop="name">
-        <a href="/2020/03/04/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/">统计学习方法学习笔记</a>
-        </h1>
-    
-
-        <p class="article-excerpt">
-            统计学习方法学习笔记[toc]
-概论本部分主要讲述了：
-
-统计学习的研究内容
-统计学习的三要素
-监督学习的学习方法
-对于模型的评价
-监督学习的三个子问题
-
-
-统计学习
-
-假设数据有统计规律
-通过对数据进行分析，发现其中的知识
-学习： 一个系统通过执行某个过程来改进它的性能
-目的是对数据进行预测和分析
-主要方法
-监督学习(supervised learning)
-非监督学习(insupervised
-        </p>
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
     </div>
-</article>
-    
-        </div>
-    
 
 
-    </div></section>
+    
+    </section>
 
 
 
@@ -342,6 +470,19 @@
             
         </ul>
     </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2020/04/04/Pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">- récent</strong>
+        <p class="article-nav-title">Pandas数据分析</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
     
     <div class="widgets-container">
         
@@ -552,11 +693,13 @@
     var disqus_shortname = 'hexo-theme-hueman';
     
     
+    var disqus_url = 'http://du-jia.github.io/2020/08/05/Deep-Learning-Notes-Week-1/';
+    
     (function() {
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
     </script>
