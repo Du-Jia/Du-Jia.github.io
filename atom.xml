@@ -6,7 +6,7 @@
   <link href="https://du-jia.github.io/atom.xml" rel="self"/>
   
   <link href="https://du-jia.github.io/"/>
-  <updated>2021-12-11T11:21:25.560Z</updated>
+  <updated>2024-08-25T16:07:31.795Z</updated>
   <id>https://du-jia.github.io/</id>
   
   <author>
@@ -15,6 +15,67 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>MoDS</title>
+    <link href="https://du-jia.github.io/2024/08/25/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%95%B0%E6%8D%AE%E5%90%88%E6%88%90%E5%8F%8A%E8%BF%87%E6%BB%A4/MoDS/"/>
+    <id>https://du-jia.github.io/2024/08/25/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%95%B0%E6%8D%AE%E5%90%88%E6%88%90%E5%8F%8A%E8%BF%87%E6%BB%A4/MoDS/</id>
+    <published>2024-08-25T15:43:39.000Z</published>
+    <updated>2024-08-25T16:07:31.795Z</updated>
+    
+    
+    <summary type="html">MoDS, 一种针对模型做数据选择的框架，从质量、覆盖范围、必要性三个角度评估指令微调数据对于 LLM 指令微调的增益</summary>
+    
+    
+    
+    <category term="论文阅读" scheme="https://du-jia.github.io/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/"/>
+    
+    <category term="数据合成及过滤" scheme="https://du-jia.github.io/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%95%B0%E6%8D%AE%E5%90%88%E6%88%90%E5%8F%8A%E8%BF%87%E6%BB%A4/"/>
+    
+    
+    <category term="Data Selection" scheme="https://du-jia.github.io/tags/Data-Selection/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>强化学习基础</title>
+    <link href="https://du-jia.github.io/2024/08/25/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/"/>
+    <id>https://du-jia.github.io/2024/08/25/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/</id>
+    <published>2024-08-25T15:21:22.000Z</published>
+    <updated>2024-08-25T15:41:59.352Z</updated>
+    
+    
+    
+    
+    
+    <category term="Reinforce Learning, 基础知识" scheme="https://du-jia.github.io/tags/Reinforce-Learning-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>从零开始复现Transformer</title>
+    <link href="https://du-jia.github.io/2024/08/25/LLM%E5%9F%BA%E7%A1%80/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%A4%8D%E7%8E%B0Transformer/"/>
+    <id>https://du-jia.github.io/2024/08/25/LLM%E5%9F%BA%E7%A1%80/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%A4%8D%E7%8E%B0Transformer/</id>
+    <published>2024-08-25T07:23:09.000Z</published>
+    <updated>2024-08-25T15:22:04.531Z</updated>
+    
+    
+    <summary type="html">从零开始复现Transformer</summary>
+    
+    
+    
+    <category term="LLM" scheme="https://du-jia.github.io/categories/LLM/"/>
+    
+    <category term="Transformer" scheme="https://du-jia.github.io/categories/LLM/Transformer/"/>
+    
+    
+    <category term="NLP" scheme="https://du-jia.github.io/tags/NLP/"/>
+    
+    <category term="LLM" scheme="https://du-jia.github.io/tags/LLM/"/>
+    
+    <category term="Transformer" scheme="https://du-jia.github.io/tags/Transformer/"/>
+    
+  </entry>
   
   <entry>
     <title>PromptBERT: Improving BERT Sentence Embeddings with Prompt</title>
@@ -338,31 +399,6 @@
     <category term="笔记" scheme="https://du-jia.github.io/tags/%E7%AC%94%E8%AE%B0/"/>
     
     <category term="CS224N" scheme="https://du-jia.github.io/tags/CS224N/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>从零开始复现Transformer</title>
-    <link href="https://du-jia.github.io/2020/03/04/LLM%E5%9F%BA%E7%A1%80/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%A4%8D%E7%8E%B0Transformer/"/>
-    <id>https://du-jia.github.io/2020/03/04/LLM%E5%9F%BA%E7%A1%80/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%A4%8D%E7%8E%B0Transformer/</id>
-    <published>2020-03-04T07:23:09.000Z</published>
-    <updated>2024-08-25T09:45:05.189Z</updated>
-    
-    
-    <summary type="html">从零开始复现Transformer</summary>
-    
-    
-    
-    <category term="LLM" scheme="https://du-jia.github.io/categories/LLM/"/>
-    
-    <category term="Transformer" scheme="https://du-jia.github.io/categories/LLM/Transformer/"/>
-    
-    
-    <category term="NLP" scheme="https://du-jia.github.io/tags/NLP/"/>
-    
-    <category term="LLM" scheme="https://du-jia.github.io/tags/LLM/"/>
-    
-    <category term="Transformer" scheme="https://du-jia.github.io/tags/Transformer/"/>
     
   </entry>
   

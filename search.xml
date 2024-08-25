@@ -4,6 +4,83 @@
   
     
     <entry>
+      <title>MoDS</title>
+      <link href="/2024/08/25/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%95%B0%E6%8D%AE%E5%90%88%E6%88%90%E5%8F%8A%E8%BF%87%E6%BB%A4/MoDS/"/>
+      <url>/2024/08/25/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%95%B0%E6%8D%AE%E5%90%88%E6%88%90%E5%8F%8A%E8%BF%87%E6%BB%A4/MoDS/</url>
+      
+        <content type="html"><![CDATA[<p>[TOC]</p><h1 id="MoDS-Model-oriented-Data-Selection-for-Instruction-Tuning"><a href="#MoDS-Model-oriented-Data-Selection-for-Instruction-Tuning" class="headerlink" title="MoDS: Model-oriented Data Selection for Instruction Tuning"></a>MoDS: Model-oriented Data Selection for Instruction Tuning</h1><p>Paper: <a href="https://arxiv.org/abs/2311.15653" target="_blank" rel="noopener">https://arxiv.org/abs/2311.15653</a></p><h2 id="核心思想"><a href="#核心思想" class="headerlink" title="核心思想"></a>核心思想</h2><p>作者提出了一种针对模型做数据选择的框架，从质量、覆盖范围、必要性三个角度评估指令微调数据对于 LLM 指令微调的增益。</p><ul><li>质量：指令本身的质量和相应回复/反馈的质量</li><li>覆盖范围：数据集内数据的多样性</li><li>必要性：对于特定 LLM 微调，指令数据的重要性和独特性<ul><li>如果 LLM 无法针对该指令生成恰当的回复，那么这条数据是重要的/独特的</li></ul></li></ul><h2 id="算法框架"><a href="#算法框架" class="headerlink" title="算法框架"></a>算法框架</h2><p><img src="https://cdn.nlark.com/yuque/0/2024/png/22546943/1709627600779-0add2341-cba3-4cb5-bcbc-f1f441e7b37f.png?x-oss-process=image%2Fformat%2Cwebp" alt="MoDS方法整体框架"></p><ol><li>用<strong>奖励模型</strong>筛选高质量数据，得到<strong>高质量数据集</strong></li><li>根据<strong>多样性</strong>选取<strong>种子数据</strong>，得到种子数据</li><li>增强指令数据<ul><li>用种子数据训练 LLM，得到种子 LLM</li><li>种子 LLM 为高质量数据集中的不同指令生成回复</li><li>用<strong>必要性</strong>评分模型（筛选高质量数据时用的奖励模型）计算回复的得分，按照阈值过滤不必要数据</li></ul></li><li>最后用选择出的数据微调模型</li></ol><h3 id="关键问题"><a href="#关键问题" class="headerlink" title="关键问题"></a>关键问题</h3><h4 id="不同的维度如何量化"><a href="#不同的维度如何量化" class="headerlink" title="不同的维度如何量化"></a>不同的维度如何量化</h4><ol><li>质量<ul><li>使用奖励模型为每个数据打分，按照阈值过滤低质量数据。</li></ul></li><li>覆盖度（多样性）<ul><li>使用 <strong>BERT</strong> 计算句子表示，计算句子之间的距离</li><li>使用 <strong>K-Center</strong> 方法，贪心选择样本</li></ul></li><li>必要性<ul><li>用种子数据训练模型，为高质量数据生成回复</li><li>用奖励模型评估必要性（奖励模型和质量评估的模型相同）</li></ul></li></ol><p>补充：K-Center 方法</p><p align="center">  <img src="https://cdn.nlark.com/yuque/0/2024/png/22546943/1709627876967-647b4d55-d065-410d-90f3-8bb0ed91c5e6.png?x-oss-process=image%2Fformat%2Cwebp" alt="K-Center方法" width="300"></p><ul><li>先选择一个初始中心点，然后迭代增加新的中心点</li><li>每一步选择离现有中心点最远的点作为新的中心点</li><li>公式说明：对非中心点集合中的点，每一步找到一个离最近中心点最远的点。</li></ul><h2 id="实验结果"><a href="#实验结果" class="headerlink" title="实验结果"></a>实验结果</h2><p>主要结果：</p><p align="center">    <img src="https://cdn.nlark.com/yuque/0/2024/png/22546943/1709630127549-20977c10-ad6d-4a5f-9bb7-9fb6120bfc06.png?x-oss-process=image%2Fformat%2Cwebp" alt="Main result" width="300"></p><p align="center">    <img src="https://cdn.nlark.com/yuque/0/2024/png/22546943/1709630127549-20977c10-ad6d-4a5f-9bb7-9fb6120bfc06.png?x-oss-process=image%2Fformat%2Cwebp" alt="Main result" width="300"></p><p>对比实验：</p><p align="center">    <img src="https://cdn.nlark.com/yuque/0/2024/png/22546943/1709630127549-20977c10-ad6d-4a5f-9bb7-9fb6120bfc06.png?x-oss-process=image%2Fformat%2Cwebp" alt="Main result" width="300"></p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本文提出了一种数据选择框架，筛选出一些高质量的种子数据，并实现指令增强，并用必要性评分模型过滤不必要的数据，再混合两者微调模型。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 论文阅读 </category>
+          
+          <category> 数据合成及过滤 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Data Selection </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>强化学习基础</title>
+      <link href="/2024/08/25/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/"/>
+      <url>/2024/08/25/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Reinforce Learning, 基础知识 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>从零开始复现Transformer</title>
+      <link href="/2024/08/25/LLM%E5%9F%BA%E7%A1%80/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%A4%8D%E7%8E%B0Transformer/"/>
+      <url>/2024/08/25/LLM%E5%9F%BA%E7%A1%80/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%A4%8D%E7%8E%B0Transformer/</url>
+      
+        <content type="html"><![CDATA[<h1 id="从零开始复现Transformer"><a href="#从零开始复现Transformer" class="headerlink" title="从零开始复现Transformer"></a>从零开始复现Transformer</h1><h2 id="Transformer结构介绍"><a href="#Transformer结构介绍" class="headerlink" title="Transformer结构介绍"></a>Transformer结构介绍</h2>]]></content>
+      
+      
+      <categories>
+          
+          <category> LLM </category>
+          
+          <category> Transformer </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> NLP </tag>
+            
+            <tag> LLM </tag>
+            
+            <tag> Transformer </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>PromptBERT: Improving BERT Sentence Embeddings with Prompt</title>
       <link href="/2021/12/10/Prompt/PromptBERT%20Improving%20BERT%20Sentence%20Embeddings/"/>
       <url>/2021/12/10/Prompt/PromptBERT%20Improving%20BERT%20Sentence%20Embeddings/</url>
@@ -321,37 +398,6 @@
             <tag> 笔记 </tag>
             
             <tag> CS224N </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>从零开始复现Transformer</title>
-      <link href="/2020/03/04/LLM%E5%9F%BA%E7%A1%80/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%A4%8D%E7%8E%B0Transformer/"/>
-      <url>/2020/03/04/LLM%E5%9F%BA%E7%A1%80/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%A4%8D%E7%8E%B0Transformer/</url>
-      
-        <content type="html"><![CDATA[<h1 id="从零开始复现Transformer"><a href="#从零开始复现Transformer" class="headerlink" title="从零开始复现Transformer"></a>从零开始复现Transformer</h1><h2 id="Transformer结构介绍"><a href="#Transformer结构介绍" class="headerlink" title="Transformer结构介绍"></a>Transformer结构介绍</h2>]]></content>
-      
-      
-      <categories>
-          
-          <category> LLM </category>
-          
-          <category> Transformer </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> NLP </tag>
-            
-            <tag> LLM </tag>
-            
-            <tag> Transformer </tag>
             
         </tags>
       
