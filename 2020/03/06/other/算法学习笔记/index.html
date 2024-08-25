@@ -66,9 +66,9 @@
     
 
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<meta name="generator" content="Hexo 4.2.1">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
-
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
 
@@ -218,16 +218,16 @@
 <p> 代码实现：</p>
 <pre class=" language-lang-(C++)"><code class="language-lang-(C++)"> // 函数中的compare函数自己实现
  void quick_sort(Student students[], int start, int ends){
-     if(start &lt; ends){
+     if(start < ends){
          int low = start, high = ends;
          Student tmp = students[low];
-         while(low &lt; high){//把数组分成两个部分：应该排在tmp前面的和后面的
-             while(low &lt; high &amp;&amp; compare(tmp, students[high]) == true){
+         while(low < high){//把数组分成两个部分：应该排在tmp前面的和后面的
+             while(low < high && compare(tmp, students[high]) == true){
                  //如果tudents[high]排在tmo的后面
                  high--;
              }
              students[low] = students[high];
-             while(low &lt; high &amp;&amp; compare(tmp, students[low]) == false){
+             while(low < high && compare(tmp, students[low]) == false){
                  low++;
              }
              students[high] = students[low];
@@ -249,18 +249,18 @@
 <p> e.g.,</p>
 <p> <code>bool comp(Elem a, Elem b)</code>返回<code>true</code>, 则表示排序过程中，<code>a</code>应该排在<code>b</code>的<strong>前面</strong>。</p>
 <p> 实例1，vector排序：</p>
-<pre class=" language-lang-(C++)"><code class="language-lang-(C++)"> bool compare(Stu &amp;s1, Stu &amp;s2){
+<pre class=" language-lang-(C++)"><code class="language-lang-(C++)"> bool compare(Stu &s1, Stu &s2){
      int flag = false;
-     if(s1.sum != s2.sum) return s1.sum &gt; s2.sum;
-     else if(s1.de != s2.de) return s1.de &gt; s2.de;
-     else return s1.id &lt; s2.id;
+     if(s1.sum != s2.sum) return s1.sum > s2.sum;
+     else if(s1.de != s2.de) return s1.de > s2.de;
+     else return s1.id < s2.id;
 
      return flag;
  }
 
  //省略其他代码， stus是一个vector数组
 
- for(int i = 0; i &lt; 4; i++){
+ for(int i = 0; i < 4; i++){
      sort(stus[i].begin(), stus[i].end(), compare);
  }
 </code></pre>
@@ -298,20 +298,53 @@ student stu[maxn];
 int RANK[10000000][4]={0};
 int now;//当前第几门课
 bool cmp(student a,student b){
-    return a.grade[now]&gt;b.grade[now];
+    return a.grade[now]>b.grade[now];
 }
 int main(){
     int N,M;
-    scanf("%d%d",&amp;N,&amp;M);
-    for(int i=0;i<n;i++){ scanf("%d%d%d%d",&stu[i].id,&stu[i].grade[1],&stu[i].grade[2],&stu[i].grade[3]);="" stu[i].grade[0]="round((stu[i].grade[1]+stu[i].grade[2]+stu[i].grade[3])/3.0)+0.5;" }="" for(now="0;now<4;now++){" sort(stu,stu+n,cmp);="" rank[stu[0].id][now]="1;" for(int="" i="1;i<N;i++){" if(stu[i].grade[now]="=stu[i-1].grade[now]){" rank[stu[i].id][now]="RANK[stu[i-1].id][now];" }else{="" int="" query;="" scanf("%d",&query);="" if(rank[query][0]="=0){" printf("n="" a\n");="" k="0;" j="0;j<4;j++){" if(rank[query][j]<rank[query][k]){="" printf("%d="" %c\n",rank[query][k],course[k]);="" system("pause");="" return="" 0;="" <="" code=""></n;i++){></algorithm></math.h></stdio.h></stdlib.h></iostream></code></pre><code class="language-lang-(C++)">
-</code></li><code class="language-lang-(C++)">
+    scanf("%d%d",&N,&M);
+    for(int i=0;i<N;i++){
+        scanf("%d%d%d%d",&stu[i].id,&stu[i].grade[1],&stu[i].grade[2],&stu[i].grade[3]);
+        stu[i].grade[0]=round((stu[i].grade[1]+stu[i].grade[2]+stu[i].grade[3])/3.0)+0.5;
+    }
+    for(now=0;now<4;now++){
+        sort(stu,stu+N,cmp);
+        RANK[stu[0].id][now]=1;
+        for(int i=1;i<N;i++){
+            if(stu[i].grade[now]==stu[i-1].grade[now]){
+                RANK[stu[i].id][now]=RANK[stu[i-1].id][now];
+            }else{
+                RANK[stu[i].id][now]=i+1;
+            }
+        }
+    }
+    int query;
+    for(int i=0;i<M;i++){
+        scanf("%d",&query);
+        if(RANK[query][0]==0){
+            printf("N/A\n");
+        }else{
+            int k=0;
+            for(int j=0;j<4;j++){
+                if(RANK[query][j]<RANK[query][k]){
+                    k=j;
+                }
+            }
+            printf("%d %c\n",RANK[query][k],course[k]);
+        }
+    }
+    system("pause");
+    return 0;
+}
+</code></pre>
+</li>
 <li><p>A1025</p>
 </li>
-</code></ul><code class="language-lang-(C++)">
+</ul>
 <p>题目是合并几块无序数据，并且按照分数进行总的排序。最终输出总排名和局部排名。</p>
-</code></li><code class="language-lang-(C++)">
-</code></ul><code class="language-lang-(C++)">
-</code></li><code class="language-lang-(C++)">
+</li>
+</ul>
+</li>
 <li><p>简单Hash问题</p>
 <ul>
 <li>常用思路:<ul>
@@ -323,15 +356,15 @@ int main(){
 <li>简单问题中，可以通过使用散列的方法，降低时间复杂度。重点是在这个过程中，应该要考虑好散列表的大小，确保数据完全散列到表内。</li>
 </ul>
 </li>
-</code></ul><code class="language-lang-(C++)">
-</code>
+</ul>
+
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="https://du-jia.github.io/2020/03/06/other/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cm09p42kr000rc4i9as9rbcfk" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://du-jia.github.io/2020/03/06/other/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="cm09pqvrp000e7si9hdrab7ql" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -417,7 +450,7 @@ B1015/A1062:
   思路一：将类别作为结构体的一个成员，将所有学生进行排序（快速排序算法），平均复杂度为：$O(NlogN)$。  思路二：分类存储每一类成绩，再分别对其排序。
   超时问题：
   最开始以为是因为排序算法的复杂度过高导致的超时，后经查阅其他人的博客发现，超时",
-        "wordCount": 536
+        "wordCount": 801
     }
 </script>
 
@@ -533,26 +566,6 @@ B1015/A1062:
                     <li>
                         
                         <div class="item-thumbnail">
-                            <a href="/2024/08/25/pytorch/PyTorch-Learn/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2024/08/25/pytorch/PyTorch-Learn/" class="title">pytorch/PyTorch-Learn</a></p>
-                            <p class="item-date"><time datetime="2024-08-25T05:56:12.980Z" itemprop="datePublished">2024-08-25</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-thumbnail">
                             <a href="/2021/12/10/Prompt/PromptBERT%20Improving%20BERT%20Sentence%20Embeddings/" class="thumbnail">
     
     
@@ -630,6 +643,26 @@ B1015/A1062:
                         </div>
                     </li>
                 
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/08/18/CS224N/CS224N-Lecture-8-Notes/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://s1.ax1x.com/2020/08/18/duEXuV.png)" alt="CS224N Lecture 8 Notes" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/CS224N%E7%AC%94%E8%AE%B0/">CS224N笔记</a></p>
+                            <p class="item-title"><a href="/2020/08/18/CS224N/CS224N-Lecture-8-Notes/" class="title">CS224N Lecture 8 Notes</a></p>
+                            <p class="item-date"><time datetime="2020-08-18T10:29:03.000Z" itemprop="datePublished">2020-08-18</time></p>
+                        </div>
+                    </li>
+                
             </ul>
         </div>
     </div>
@@ -649,7 +682,7 @@ B1015/A1062:
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">八月 2024</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">6</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">6</span></li></ul>
         </div>
     </div>
 
