@@ -6,26 +6,25 @@
     
 
     
-    <title>pytorch_basic | Du-Jia&#39;s Blog</title>
+    <title>LLM基础/Tranformer 结构 | Du-Jia&#39;s Blog</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="pytorch" />
+    <meta name="keywords" content="" />
     
-    <meta name="description" content="pytorch baisc最近用Pytorch的时候发现对于pytorch的一些细节问题掌握不够充分。包括整个框架的使用流程，Tensor的一些初始化，类型转换的细节也理解的不是很深。为了方便以后能够更从容的使用Pytorch，重新学习以下Pytorch的一些基础内容，并对重点做一下记录。 目前大致按照官方tutorials的顺序记录，随着学习的深入和对文档的查阅慢慢补充。 Basic - Te">
+    <meta name="description" content="Make the world difference.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="pytorch_basic">
-<meta property="og:url" content="https://du-jia.github.io/2020/09/22/pytorch/pytorch-basic/index.html">
+<meta property="og:title" content="LLM基础&#x2F;Tranformer 结构">
+<meta property="og:url" content="https://du-jia.github.io/2024/08/25/LLM%E5%9F%BA%E7%A1%80/Tranformer%20%E7%BB%93%E6%9E%84/index.html">
 <meta property="og:site_name" content="Du-Jia&#39;s Blog">
-<meta property="og:description" content="pytorch baisc最近用Pytorch的时候发现对于pytorch的一些细节问题掌握不够充分。包括整个框架的使用流程，Tensor的一些初始化，类型转换的细节也理解的不是很深。为了方便以后能够更从容的使用Pytorch，重新学习以下Pytorch的一些基础内容，并对重点做一下记录。 目前大致按照官方tutorials的顺序记录，随着学习的深入和对文档的查阅慢慢补充。 Basic - Te">
+<meta property="og:description" content="Make the world difference.">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s1.ax1x.com/2020/09/22/wOfiUP.jpg">
-<meta property="article:published_time" content="2020-09-22T10:48:40.000Z">
-<meta property="article:modified_time" content="2020-09-22T10:56:11.526Z">
+<meta property="article:published_time" content="2024-08-25T06:24:05.976Z">
+<meta property="article:modified_time" content="2024-08-25T06:26:06.318Z">
 <meta property="article:author" content="Du-Jia">
-<meta property="article:tag" content="pytorch">
+<meta property="article:tag" content="LLM">
+<meta property="article:tag" content=" NLP">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://s1.ax1x.com/2020/09/22/wOfiUP.jpg">
     
 
     
@@ -159,14 +158,14 @@
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-pytorch/pytorch-basic" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-LLM基础/Tranformer 结构" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
                 
     
         <h1 class="article-title" itemprop="name">
-        pytorch_basic
+        LLM基础/Tranformer 结构
         </h1>
     
 
@@ -177,8 +176,8 @@
                 
     <div class="article-date">
       <i class="fa fa-calendar"></i>
-      <a href="/2020/09/22/pytorch/pytorch-basic/" class="article-date">
-         <time datetime="2020-09-22T10:48:40.000Z" itemprop="datePublished">2020-09-22</time>
+      <a href="/2024/08/25/LLM%E5%9F%BA%E7%A1%80/Tranformer%20%E7%BB%93%E6%9E%84/" class="article-date">
+         <time datetime="2024-08-25T06:24:05.976Z" itemprop="datePublished">2024-08-25</time>
       </a>
     </div>
 
@@ -186,11 +185,6 @@
                 
 
                 
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/pytorch/" rel="tag">pytorch</a>
-    </div>
-
                 
 
                 
@@ -199,176 +193,14 @@
         
         
         <div class="article-entry" itemprop="articleBody">
-            <p><a href="https://imgchr.com/i/wOfiUP" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2020/09/22/wOfiUP.jpg" alt="封面"></a></p>
-<h1 id="pytorch-baisc"><a href="#pytorch-baisc" class="headerlink" title="pytorch baisc"></a>pytorch baisc</h1><p>最近用Pytorch的时候发现对于pytorch的一些细节问题掌握不够充分。包括整个框架的使用流程，Tensor的一些初始化，类型转换的细节也理解的不是很深。为了方便以后能够更从容的使用Pytorch，重新学习以下Pytorch的一些基础内容，并对重点做一下记录。</p>
-<p>目前大致按照官方tutorials的顺序记录，随着学习的深入和对文档的查阅慢慢补充。</p>
-<h2 id="Basic-Tensor"><a href="#Basic-Tensor" class="headerlink" title="Basic - Tensor"></a>Basic - Tensor</h2><p><strong>包</strong>： <code>torch.Tensor</code></p>
-<ol>
-<li><p>Tensor的创建</p>
-<ul>
-<li><p>直接创建，不初始化： <code>torch.empty()</code></p>
-<p>  e.g., <code>torch.empty(5, 3, dtype=torch.long)</code></p>
-<p>  其中内部的参数是tensor的形状</p>
-<p>相应的，有如下的初始化方式，参数均和上述一致：</p>
-</li>
-<li><p>随机初始化: <code>torch.rand()</code></p>
-</li>
-<li>0值初始化:<code>torch.zeros()</code></li>
-<li>列表初始化：<code>torch.tensor(A_List)</code></li>
-<li><p>用已有Tensor初始化：<code>torch.new_ones()</code>(<em>除非指定数据类型，否则和输入的tensor数据类型相同</em>)</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">x &#x3D; x.new_ones(5, 3, dtype&#x3D;torch.double)</span><br><span class="line"># new_* methods take in sizes</span><br><span class="line">print(x)</span><br><span class="line"></span><br><span class="line">x &#x3D; torch.randn_like(x, dtype&#x3D;torch.float)</span><br><span class="line"># override dtype!</span><br><span class="line">print(x)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>操作</p>
-<ul>
-<li>形状相同可以直接四则运算(<code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>)，这样的运算是对应位置上的元素在运算</li>
-<li>四则运算函数，返回一个运算结果，可以通过out参数将结果输出到给定tensor：</li>
-<li><code>torch.add(x, y)</code></li>
-<li><code>torch.sub(x, y)</code></li>
-<li><code>torch.mul(x, y)</code></li>
-<li><code>torch.div(x, y, out=result)</code></li>
-<li>原地运算，函数名后缀为下划线的函数，运算结果直接在对应Tensor上改变。</li>
-<li><code>y.add_(x)</code></li>
-<li><code>x.copy_(y)</code></li>
-<li><code>x.t_()</code></li>
-</ul>
-</li>
-<li><p>索引</p>
-<ul>
-<li>可以用numpy数组的索引方式来索引tensor</li>
-<li>如果一个tensor只有一个元素，可以使用<code>x.item()</code>获得该元素</li>
-</ul>
-</li>
-<li><p>改变Tensor形状</p>
-<ul>
-<li><p><code>view()</code>：</p>
-<p>  <code>view()</code>函数接受的参数即是需要修改后的形状。</p>
-<p>  <code>x.view(16)</code>: 将x改为长度为16的向量</p>
-<p>  <code>x.view(-1, 8)</code>: -1表示其他不确定的维度，这个维度需要根据第二个参数8计算出来。例如., 此处x原始的形状为(4,4);那么第二个维度的大小为8，可以计算出第一个维度的大小为2，则新的x的形状为：(2,8)</p>
-</li>
-</ul>
-</li>
-<li><p>numpy.ndarray -&gt; tensor:</p>
-<ul>
-<li><p>如何转化：</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># converting numpy array to torch tensor</span><br><span class="line">import numpy as np</span><br><span class="line">a &#x3D; np.ones(5)</span><br><span class="line">b &#x3D; torch.from_numpy(a)</span><br><span class="line">np.add(a, 1, out&#x3D;a)</span><br><span class="line">print(a)</span><br><span class="line">print(b)</span><br><span class="line"></span><br><span class="line"># tensor to numpy</span><br><span class="line">a &#x3D; torch.ones(5)</span><br><span class="line">b &#x3D; a.numpy()</span><br></pre></td></tr></table></figure>
-<p>可以通过<code>tensor_name.numpy()</code>方法将一个Tensor转化为numpy数组。</p>
-<p><strong>通过Tensor转化的Numpy和原始的Tensor共享内存</strong>：</p>
-<p>也就是说，如果你修改得到的Numpy数组，相应的Tensor内容也会变化。（类似指针操作）</p>
-<p>同理，使用numpy数组生成的Tensor和原始numpy数组也有这样的关系。</p>
-</li>
-</ul>
-</li>
-<li><p>使用GPU</p>
-<p> 使用<code>.to()</code>函数将变量转为GPU数据。</p>
-<p> eg.,</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># let us run this cell only if CUDA is available</span><br><span class="line"># We will use &#96;&#96;torch.device&#96;&#96; objects to move tensors in and out of GPU</span><br><span class="line">if torch.cuda.is_available():</span><br><span class="line">    device &#x3D; torch.device(&quot;cuda&quot;)          # a CUDA device object</span><br><span class="line">    y &#x3D; torch.ones_like(x, device&#x3D;device)  # directly create a tensor on GPU</span><br><span class="line">    x &#x3D; x.to(device)                       # or just use strings &#96;&#96;.to(&quot;cuda&quot;)&#96;&#96;</span><br><span class="line">    z &#x3D; x + y</span><br><span class="line">    print(z)</span><br><span class="line">    print(z.to(&quot;cpu&quot;, torch.double))       # &#96;&#96;.to&#96;&#96; can also change dtype together!</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>参考<a href="https://pytorch.org/docs/stable/torch.html" target="_blank" rel="noopener">官方文档</a></p>
-<h2 id="Basic-Autograd-自动求导"><a href="#Basic-Autograd-自动求导" class="headerlink" title="Basic - Autograd, 自动求导"></a>Basic - Autograd, 自动求导</h2><p><strong>包</strong>：<code>torch.autograd</code>, <code>torch.Function</code></p>
-<p>Function: <a href="https://pytorch.org/docs/stable/autograd.html#function" target="_blank" rel="noopener">参考文档</a></p>
-<p><code>autograd</code>这个包为所有在张量上的操作提供了自动求导的功能。</p>
-<p>该框架是在运行时定义的，因此反向传播的方式由代码运行的方式定义，每次迭代都可以不同。</p>
-<ol>
-<li><p><code>requires_grad</code>和<code>grad</code>属性</p>
-<ul>
-<li><code>requires_grad</code>属性，<code>boolean</code>类型，<code>True</code>表示需要自动计算梯度</li>
-<li><code>grad</code>：存储自动计算的梯度</li>
-<li><code>requires_grad_()</code>方法可以改变一个<code>Tensor</code>的该属性的值</li>
-</ul>
-</li>
-<li><p>停止追踪历史计算</p>
-<ul>
-<li><p><code>.detach()</code>：避免张量追溯历史记录或者被之后的计算追溯。(不太明白，后续修改补充。原句：<em>To stop a tensor from tracking history, you can call .detach() to detach it from the computation history, and to prevent future computation from being tracked.</em>)</p>
-<p>如果需要使用一个<code>.requires_grad</code>属性为<code>True</code>的变量，但是又不想对这个变量做的操作被追溯（计算梯度），可以使用<code>.detach()</code>方法得到该变量的副本，并且副本的该属性默认为<code>False</code></p>
-</li>
-</ul>
-</li>
-<li><p>避免追踪历史记录或者使用内存：</p>
-<ul>
-<li>将代码块写在<code>with_torch.no_grad():</code>下。该方法下的代码块在执行时将不会自动计算梯度或者更新参数。适合在对已经训练好的模型测试，评估时使用。</li>
-</ul>
-</li>
-<li><p>自动求导过程中最重要的类：<code>Function</code></p>
-<ul>
-<li><code>Tensor</code>和<code>Function</code>是相关联的，二者一起构建了一个非循环图以编码一个完整的计算过程。</li>
-<li><code>.grad_fn</code>：指向了生成这个<code>Tensor</code>的<code>Function</code>。当属性值为<code>None</code>，表示这个<code>Tensor</code>是由用户创建的</li>
-</ul>
-</li>
-<li><p>求导：<code>.backward()</code></p>
- <font color="red">此处存疑，未能完全理解</font>
-
-<p> 使用<code>.backward()</code>求导需要注意的问题：</p>
-<ol>
-<li>如果该<code>Tensor</code>是一个标量，不需要特别指定参数</li>
-<li><p>如果该<code>Tensor</code>含有不止一个元素，需要指定一个<code>gradient</code>参数，这个参数是一个形状匹配的<code>Tensor</code></p>
-<p><code>autograd</code>是一个计算向量-雅可比矩阵乘积的引擎</p>
-<p>下面对此详细说明：</p>
-<p>实际上，<code>.backward()</code>是需要参数的。只不过当<code>Tensor</code>是一个标量的时候，默认方法实质上等价于<code>.backward(torch.tensor(1.))</code>, <code>autograd</code>引擎实际上计算的是$1.0*\dfrac{d(o)}{dx}$，其中1.0被理解为$\dfrac{dl}{do}=1.0$</p>
-<p>把<code>.backward()</code>的形参视为$v$，最终计算的值其实是$J^T\dotv$。（为什么不是$v^T\dotJ$, 因为前者得到的是列向量）</p>
-</li>
-</ol>
-</li>
-<li><p>原始教程</p>
-</li>
-</ol>
-<p><a href="https://pytorch.org/tutorials/beginner/blitz/autograd_tutorial.html" target="_blank" rel="noopener">点击此处查看原始教程</a></p>
-<h2 id="Basic-Neural-Network"><a href="#Basic-Neural-Network" class="headerlink" title="Basic - Neural Network"></a>Basic - Neural Network</h2><p><strong>包</strong>：<code>torch.nn</code></p>
-<p>重点内容:</p>
-<ul>
-<li>定义模型</li>
-<li><code>nn.Module</code></li>
-<li><code>forward(input)</code></li>
-</ul>
-<ol>
-<li><p>模型训练流程</p>
-<ul>
-<li>定义神经网络，定义可学习的参数</li>
-<li>遍历输入数据集</li>
-<li>处理输入</li>
-<li>计算损失值</li>
-<li>计算梯度</li>
-<li>更新权重</li>
-</ul>
-</li>
-<li><p>定义网络</p>
-<ul>
-<li>继承<code>nn.Module</code></li>
-<li>重写<code>__init__()</code></li>
-<li><p>重写<code>forward()</code></p>
-<p>模型的参数</p>
-</li>
-<li><p><code>model.parameters()</code>方法返回模型中的参数</p>
-</li>
-<li><code>model(input)</code>直接调用<code>forward()</code>方法，返回前馈网络的传播。</li>
-<li><p><code>model.zero_grad()</code>，在反向传播前，应该清空上一次迭代的梯度</p>
-<p><strong>重点</strong>：</p>
-</li>
-<li><p><code>torch.nn</code>只支持mini-batches输入。也就是说，整个<code>troch.nn</code>包中的方法都只支持使用mini-batches作为输入，不支持单个样本的输入。例如2为卷积层接收的输入应该是一个4维的张量，这个张量各个维度的意义是：样本数，通道数，高度，宽度。</p>
-</li>
-<li>如果确实需要输入单个样本，可以考虑使用<code>.unsqueeze(0)</code>方法，为样本增加一个维度。</li>
-</ul>
-</li>
-<li><p>计算loss值</p>
-<p> Loss Function接受一个张量对<code>(output, target)</code>作为输入，并且计算输出和目标值的差距。</p>
-<p> 有很多常用的Loss函数，这里不一一写出，详情参考<a href="https://pytorch.org/docs/stable/nn.html#loss-functions" target="_blank" rel="noopener">Loss Function</a></p>
- <font color="res">关于Loss函数的一些细节问题之后补充</font>
-</li>
-<li><p>反向传播</p>
-<p> 示例：</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">net.zero_grad()</span><br><span class="line"># zeroes the gradient buffers of all parameters</span><br><span class="line"></span><br><span class="line">print(&#39;conv1.bias.grad before backward&#39;)</span><br><span class="line">print(net.conv1.bias.grad)</span><br><span class="line"></span><br><span class="line">loss.backward()</span><br><span class="line"></span><br><span class="line">print(&#39;conv1.bias.grad after backward&#39;)</span><br><span class="line">print(net.conv1.bias.grad)</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-
+            
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="https://du-jia.github.io/2020/09/22/pytorch/pytorch-basic/" data-id="ckx1qahf6001qs8w701uyg8ci" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="https://du-jia.github.io/2024/08/25/LLM%E5%9F%BA%E7%A1%80/Tranformer%20%E7%BB%93%E6%9E%84/" data-id="cm097dq6b0000ooi99tn6c7d5" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -438,19 +270,16 @@
             "@type": "Person",
             "name": "Du-Jia"
         },
-        "headline": "pytorch_basic",
-        "image": "https://Du-Jia.github.iohttps://s1.ax1x.com/2020/09/22/wOfiUP.jpg",
-        "keywords": "pytorch",
+        "headline": "LLM基础/Tranformer 结构",
+        "image": "https://Du-Jia.github.io",
+        "keywords": "",
         "genre": "",
-        "datePublished": "2020-09-22",
-        "dateCreated": "2020-09-22",
-        "dateModified": "2020-09-22",
-        "url": "https://Du-Jia.github.io/2020/09/22/pytorch/pytorch-basic/",
-        "description": "
-pytorch baisc最近用Pytorch的时候发现对于pytorch的一些细节问题掌握不够充分。包括整个框架的使用流程，Tensor的一些初始化，类型转换的细节也理解的不是很深。为了方便以后能够更从容的使用Pytorch，重新学习以下Pytorch的一些基础内容，并对重点做一下记录。
-目前大致按照官方tutorials的顺序记录，随着学习的深入和对文档的查阅慢慢补充。
-Basic - Te",
-        "wordCount": 390
+        "datePublished": "2024-08-25",
+        "dateCreated": "2024-08-25",
+        "dateModified": "2024-08-25",
+        "url": "https://Du-Jia.github.io/2024/08/25/LLM基础/Tranformer 结构/",
+        "description": "",
+        "wordCount": 1
     }
 </script>
 
@@ -531,20 +360,10 @@ Basic - Te",
         
 <nav id="article-nav">
     
-        <a href="/2020/12/29/about/me/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">下一篇</strong>
-        <p class="article-nav-title">
-        
-            About Me
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
     
-    
-        <a href="/2020/08/18/CS224N/CS224N-Lecture-8-Notes/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2024/08/25/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
         <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">CS224N Lecture 8 Notes</p>
+        <p class="article-nav-title">Hello World</p>
         <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
         </a>
     
@@ -760,7 +579,7 @@ Basic - Te",
     var disqus_shortname = 'hexo-theme-hueman';
     
     
-    var disqus_url = 'https://du-jia.github.io/2020/09/22/pytorch/pytorch-basic/';
+    var disqus_url = 'https://du-jia.github.io/2024/08/25/LLM%E5%9F%BA%E7%A1%80/Tranformer%20%E7%BB%93%E6%9E%84/';
     
     (function() {
     var dsq = document.createElement('script');

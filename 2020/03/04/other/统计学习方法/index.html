@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    
+
+    
+    <title>统计学习方法学习笔记 | Du-Jia&#39;s Blog</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="keywords" content="笔记,机器学习" />
+    
+    <meta name="description" content="学习机器学习的基础理论">
+<meta property="og:type" content="article">
+<meta property="og:title" content="统计学习方法学习笔记">
+<meta property="og:url" content="https://du-jia.github.io/2020/03/04/other/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:site_name" content="Du-Jia&#39;s Blog">
+<meta property="og:description" content="学习机器学习的基础理论">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-03-04T12:00:00.000Z">
+<meta property="article:modified_time" content="2024-08-25T06:23:30.999Z">
+<meta property="article:author" content="Du-Jia">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="机器学习">
+<meta name="twitter:card" content="summary">
+    
+
+    
+        <link rel="alternate" href="/" title="Du-Jia&#39;s Blog" type="application/atom+xml" />
+    
+
+    
+
+    
+<link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+
+    
+<link rel="stylesheet" href="/libs/titillium-web/styles.css">
+
+    
+<link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+<script src="/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+
+    
+    
+        
+<link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+
+    
+    
+    
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">吃的是草，挤的是奶</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">主页</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/CS224N%E7%AC%94%E8%AE%B0/">CS224N笔记</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/NLP%E5%85%A5%E9%97%A8%E8%AE%A1%E5%88%92-%E7%AC%94%E8%AE%B0/">NLP入门计划-笔记</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%E5%BA%93/">库</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">源码分析</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">论文阅读笔记</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">关于</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+
+<script src="/js/insight.js"></script>
+
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+    </h1>
+</div>
+
+                        <div class="main-body-content">
+                            <article id="post-other/统计学习方法" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        统计学习方法学习笔记
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+      <i class="fa fa-calendar"></i>
+      <a href="/2020/03/04/other/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/" class="article-date">
+         <time datetime="2020-03-04T12:00:00.000Z" itemprop="datePublished">2020-03-04</time>
+      </a>
+    </div>
+
+
+                
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a>, <a class="tag-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a>
+    </div>
+
+                
+
+                
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <h1 id="统计学习方法学习笔记"><a href="#统计学习方法学习笔记" class="headerlink" title="统计学习方法学习笔记"></a>统计学习方法学习笔记</h1><h2 id="概论"><a href="#概论" class="headerlink" title="概论"></a>概论</h2><p>本部分主要讲述了：</p>
+<ul>
+<li>统计学习的研究内容</li>
+<li>统计学习的三要素</li>
+<li>监督学习的学习方法</li>
+<li>对于模型的评价</li>
+<li>监督学习的三个子问题</li>
+</ul>
+<ol>
+<li>统计学习<ul>
+<li>假设数据有统计规律</li>
+<li>通过对数据进行分析，发现其中的知识</li>
+<li>学习： 一个系统通过执行某个过程来改进它的性能</li>
+<li>目的是对数据进行预测和分析</li>
+<li>主要方法<ul>
+<li>监督学习(supervised learning)</li>
+<li>非监督学习(insupervised learning)</li>
+<li>半监督学习(semi-supervised learning)</li>
+<li>强化学习(reinforcement learning)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>监督学习<ul>
+<li>任务：学习一个模型。该模型能够对输出产生较好的预测结果</li>
+<li>基本概念：<ol>
+<li>输入空间，特征空间，输出空间</li>
+<li>联合概率分布，条件概率（决策函数）</li>
+<li>假设空间</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>统计学习三要素</p>
+<ul>
+<li>模型：模型的假设空间，即需要学习的函数属于的某一个函数空间<ol>
+<li>通过模型学习输入和输出的联合概率密度（生成方法）或者条件概率密度（判别方法，也叫决策函数）</li>
+</ol>
+</li>
+<li><p>策略：模型选择的准则，用于评价假设空间中的模型，以选择一个最优模型</p>
+<ol>
+<li>损失函数(loss function)/代价函数(cost function):<blockquote>
+<ul>
+<li>衡量模型一次预测的好坏</li>
+<li>wait to insert LaTex function<ul>
+<li>0-1(0-1 loss function)</li>
+<li>平方损失(quadrtic loss function)</li>
+<li>绝对损失(absolute loss function)</li>
+<li>对数损失(logarithmic loss function)</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+</li>
+<li><p>风险函数(risk function)</p>
+<blockquote>
+<ul>
+<li>平均意义下的模型的好坏，</li>
+</ul>
+</blockquote>
+<p> 损失函数的期望,即风险函数(risk function)或者是期望损失(expected loss)</p>
+<p> 因为风险函数中的联合概率分布未知，因此使用经验风险估计期望风险。(当样本数量足够多的时候可行，实际中样本往往较少，因此需要对这个函数进行修正)</p>
+</li>
+<li>经验风险(empirivcal risk)/经验损失(empirical loss)<ul>
+<li>训练集上的平均损失</li>
+<li>矫正策略：<ul>
+<li>经验风险最小化（容易引起过拟合(overfitting)）</li>
+<li>结构风险最小化<ul>
+<li>同时表示模型的经验风险和模型的复杂度</li>
+<li>正则化</li>
+</ul>
+</li>
+<li>将统计学习问题转化为最优化问题</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>算法：模型学习的算法<ul>
+<li>统计学习归结为最优化问题，因此可采用最优化算法来求解最优化模型</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>模型评估<ul>
+<li>训练误差：训练数据集的平均损失<ul>
+<li>可以判断该问题是否可以学习，但是本质上是不重要的</li>
+</ul>
+</li>
+<li>测试误差：测试数据集的平均损失<ul>
+<li>测试误差用于判断模型的泛化能力，决定模型的好坏</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>模型选择<ul>
+<li>过拟合<ul>
+<li>选择的模型复杂度比较高（比实际模型高）</li>
+<li>包含参数过多</li>
+</ul>
+</li>
+<li>模型选择<ul>
+<li>复杂度适当</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>正则化和交叉验证<ul>
+<li>正则化：<ul>
+<li>在经验风险的基础上增加正则化项或者罚项。</li>
+</ul>
+</li>
+<li>交叉验证<ul>
+<li>在数据集不足的时候重复使用数据来对模型进行验证</li>
+<li>简单交叉验证<ul>
+<li>随机拆分数据为训练集和测试机</li>
+<li>在不同的条件下训练模型，在测试集上测试这些模型，选择最好的</li>
+</ul>
+</li>
+<li>S折交叉验证(S-fold cross validation)<ul>
+<li>将数据集分成S个不相交子集，S-1个用于训练，1个用于测试</li>
+<li>重复所有S种可能，选择平均测试误差最小的模型</li>
+</ul>
+</li>
+<li>留一交叉验证(leave one out cross validation)<ul>
+<li>S-fold的特殊情况，S=N</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>泛化能力<ul>
+<li>评价标准：泛化误差上界</li>
+<li>泛化误差(generalization ability)</li>
+<li>泛化误差上界：<ul>
+<li>是N（样本容量）的函数，N增大，上界-&gt;0</li>
+<li>是假设空间容量的函数，capacity越大，上界越大</li>
+</ul>
+</li>
+<li>二分类问题的泛化误差上界</li>
+</ul>
+</li>
+<li>生成模型和判别模型<ul>
+<li>生成模型：学习的是X，Y的联合分布函数g(X,Y)<ul>
+<li>朴素贝叶斯</li>
+<li>隐马尔可夫</li>
+</ul>
+</li>
+<li>判别模型：学习的是X,Y的条件概率分布（也即决策函数）<ul>
+<li>K-近邻</li>
+<li>感知机</li>
+<li>决策树</li>
+<li>逻辑斯蒂回归</li>
+<li>最大熵</li>
+<li>支持向量机</li>
+<li>提升方法</li>
+<li>条件随机场</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>分类问题（连续/离散输入 —&gt; 离散输出）<ul>
+<li>二分类<ul>
+<li>预测情况：<ul>
+<li>TP: True Positive</li>
+<li>FN: False Negetive</li>
+<li>TN: True Negetive</li>
+<li>FP: False Positive</li>
+</ul>
+</li>
+<li>评价标准：<ul>
+<li>精确率(precision)</li>
+<li>召回率(recall)</li>
+<li>F1值</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>多分类</li>
+</ul>
+</li>
+<li>标注问题（序列输入 —&gt; 序列输出）<ul>
+<li>分类问题的推广</li>
+<li>结构预测的简单形式</li>
+<li>输入：观测序列</li>
+<li>输出：标记序列或者是状态序列</li>
+</ul>
+</li>
+<li>回归问题<ul>
+<li>预测输入变量和输出变量的关系</li>
+<li>等价于函数拟合</li>
+<li>分类<ul>
+<li>按输入维度：<ul>
+<li>一元回归</li>
+<li>多元回归</li>
+</ul>
+</li>
+<li>按模型类型<ul>
+<li>线性</li>
+<li>非线性</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="感知机"><a href="#感知机" class="headerlink" title="感知机"></a>感知机</h2><blockquote>
+<p>二类分类，线性模型</p>
+</blockquote>
+<h3 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h3><ul>
+<li><p>特征空间中的线性分类模型的集合，属于判别模型（模型是一个输入和输出是线性关系）</p>
+<script type="math/tex; mode=display">f(x) = sign(w\cdot{x}+b)</script></li>
+<li><p>输入：n维特征向量 $x$</p>
+</li>
+<li>输出：$y=+1$或者$y=-1$</li>
+<li>参数：<ul>
+<li>$w$：超平面的法向量，</li>
+<li>$b$：超平面的截距</li>
+</ul>
+</li>
+</ul>
+<h3 id="学习策略"><a href="#学习策略" class="headerlink" title="学习策略"></a>学习策略</h3><ul>
+<li>损失函数极小化</li>
+<li>误分类点</li>
+<li><p>损失函数：误分类点到超平面的总距离</p>
+<p>  $-\dfrac{1}{|w|}\displaystyle\sum_{x_i\in M}|w\cdot{x_i}+{b}|$</p>
+</li>
+<li>$|w|$是$w$的$L_2$范数</li>
+</ul>
+<h3 id="学习算法"><a href="#学习算法" class="headerlink" title="学习算法"></a>学习算法</h3><ul>
+<li>随机梯度下降（SGD）</li>
+<li>原始形式<ul>
+<li>w表示为原始形式</li>
+</ul>
+</li>
+<li>对偶形式<ul>
+<li>w用$\displaystyle\sum_{i=1}^N{\alpha_iy_ix_i}$表示</li>
+</ul>
+</li>
+</ul>
+<h2 id="k-近邻"><a href="#k-近邻" class="headerlink" title="k-近邻"></a>k-近邻</h2><p>基本的回归和分类方法</p>
+<blockquote>
+<p>特征空间划分</p>
+</blockquote>
+<ul>
+<li>原理<ul>
+<li>根据k个<strong>最近邻</strong>的实例确定新实例的类别，例如通过多数表决确定</li>
+</ul>
+</li>
+<li>三要素<ul>
+<li>距离度量<ul>
+<li>欧式距离($L_2$距离)</li>
+<li>$L_p$距离：$L_p(x_i,x_j)=(\displaystyle\sum_{l=1}^n{|x_i^{(l)}-x_j^{(l)}|}^p)^\frac{1}{p}$</li>
+<li>Minkowski距离</li>
+</ul>
+</li>
+<li>k值的选择<ul>
+<li>k小：近似误差小，估计误差大</li>
+<li>k大：近似误差大，估计误差小</li>
+</ul>
+</li>
+<li>分类决策规则<ul>
+<li>多数表决</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>实现<ul>
+<li>线性扫描</li>
+<li>kd树（这里的k表示空间的维度k）</li>
+</ul>
+</li>
+</ul>
+<h2 id="朴素贝叶斯"><a href="#朴素贝叶斯" class="headerlink" title="朴素贝叶斯"></a>朴素贝叶斯</h2><p>基于贝叶斯定理、特征条件独立假设、分类方法</p>
+<ul>
+<li>学习的是联合概率分布</li>
+</ul>
+<h2 id="决策树"><a href="#决策树" class="headerlink" title="决策树"></a>决策树</h2><ul>
+<li>基本分类和回归方法</li>
+</ul>
+<h2 id="逻辑斯蒂回归和最大熵"><a href="#逻辑斯蒂回归和最大熵" class="headerlink" title="逻辑斯蒂回归和最大熵"></a>逻辑斯蒂回归和最大熵</h2><h2 id="支持向量机"><a href="#支持向量机" class="headerlink" title="支持向量机"></a>支持向量机</h2><h2 id="提升方法"><a href="#提升方法" class="headerlink" title="提升方法"></a>提升方法</h2><h2 id="EM算法及其推广"><a href="#EM算法及其推广" class="headerlink" title="EM算法及其推广"></a>EM算法及其推广</h2><h2 id="隐马尔可夫模型"><a href="#隐马尔可夫模型" class="headerlink" title="隐马尔可夫模型"></a>隐马尔可夫模型</h2><h2 id="条件随机场"><a href="#条件随机场" class="headerlink" title="条件随机场"></a>条件随机场</h2><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2>
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="https://du-jia.github.io/2020/03/04/other/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/" data-id="clez9q4ym000pgkw75urxfckv" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "author": {
+            "@type": "Person",
+            "name": "Du-Jia"
+        },
+        "headline": "统计学习方法学习笔记",
+        "image": "https://Du-Jia.github.io",
+        "keywords": "笔记 机器学习",
+        "genre": "学习笔记",
+        "datePublished": "2020-03-04",
+        "dateCreated": "2020-03-04",
+        "dateModified": "2024-08-25",
+        "url": "https://Du-Jia.github.io/2020/03/04/other/统计学习方法/",
+        "description": "统计学习方法学习笔记概论本部分主要讲述了：
+
+统计学习的研究内容
+统计学习的三要素
+监督学习的学习方法
+对于模型的评价
+监督学习的三个子问题
+
+
+统计学习
+假设数据有统计规律
+通过对数据进行分析，发现其中的知识
+学习： 一个系统通过执行某个过程来改进它的性能
+目的是对数据进行预测和分析
+主要方法
+监督学习(supervised learning)
+非监督学习(insupervised learni",
+        "wordCount": 118
+    }
+</script>
+
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
+    </div>
+
+
+    
+    </section>
+
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>关注我 :</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="twitter" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-twitter"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="stack-overflow" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-stack-overflow"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/Du-Jia/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="weibo" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-weibo"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="rss" href="/" target="_blank" rel="noopener">
+                        <i class="icon fa fa-rss"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2020/03/06/other/word2vec%E6%BA%90%E7%A0%81%E7%90%86%E8%A7%A3/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">下一篇</strong>
+        <p class="article-nav-title">
+        
+            Word2Vec源码理解
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/2020/03/04/CS224N/CS224N-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Lecture-1-2-Word2Vec/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">上一篇</strong>
+        <p class="article-nav-title">CS224N 学习笔记 Lecture 1,2 Word2Vec</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">最新文章</h3>
+        <div class="widget">
+            <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2024/08/25/LLM%E5%9F%BA%E7%A1%80/Tranformer%20%E7%BB%93%E6%9E%84/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2024/08/25/LLM%E5%9F%BA%E7%A1%80/Tranformer%20%E7%BB%93%E6%9E%84/" class="title">LLM基础/Tranformer 结构</a></p>
+                            <p class="item-date"><time datetime="2024-08-25T06:24:05.976Z" itemprop="datePublished">2024-08-25</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2024/08/25/hello-world/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2024/08/25/hello-world/" class="title">Hello World</a></p>
+                            <p class="item-date"><time datetime="2024-08-25T05:56:12.975Z" itemprop="datePublished">2024-08-25</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/12/10/Prompt/PromptBERT%20Improving%20BERT%20Sentence%20Embeddings/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://s4.ax1x.com/2021/12/11/o76b4I.png)" alt="PromptBERT: Improving BERT Sentence Embeddings with Prompt" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">论文阅读笔记</a></p>
+                            <p class="item-title"><a href="/2021/12/10/Prompt/PromptBERT%20Improving%20BERT%20Sentence%20Embeddings/" class="title">PromptBERT: Improving BERT Sentence Embeddings with Prompt</a></p>
+                            <p class="item-date"><time datetime="2021-12-10T10:23:09.000Z" itemprop="datePublished">2021-12-10</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2021/05/07/pytorch/PyTorch-SGD-%E6%B1%82%E5%87%BD%E6%95%B0%E6%9C%80%E4%BC%98%E5%80%BC/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2021/05/07/pytorch/PyTorch-SGD-%E6%B1%82%E5%87%BD%E6%95%B0%E6%9C%80%E4%BC%98%E5%80%BC/" class="title">PyTorch-SGD-求函数最优值</a></p>
+                            <p class="item-date"><time datetime="2021-05-07T14:17:45.000Z" itemprop="datePublished">2021-05-07</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/2020/12/29/about/me/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://s3.ax1x.com/2020/12/29/rHH6sI.jpg)" alt="About Me" class="thumbnail-image"></span>
+    
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"></p>
+                            <p class="item-title"><a href="/2020/12/29/about/me/" class="title">About Me</a></p>
+                            <p class="item-date"><time datetime="2020-12-29T06:58:33.000Z" itemprop="datePublished">2020-12-29</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">分类</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CS224N%E7%AC%94%E8%AE%B0/">CS224N笔记</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NLP%E5%85%A5%E9%97%A8%E8%AE%A1%E5%88%92-%E7%AC%94%E8%AE%B0/">NLP入门计划-笔记</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BA%93/">库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">源码分析</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">论文阅读笔记</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">归档</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">八月 2024</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">6</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">标签</h3>
+        <div class="widget">
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CS224N/" rel="tag">CS224N</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/" rel="tag">NLP</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pandas/" rel="tag">Pandas</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pytorch/" rel="tag">pytorch</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%B7%E9%A2%98/" rel="tag">刷题</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" rel="tag">数据分析</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag">深度学习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">标签云</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/CS224N/" style="font-size: 10px;">CS224N</a> <a href="/tags/NLP/" style="font-size: 16.67px;">NLP</a> <a href="/tags/Pandas/" style="font-size: 10px;">Pandas</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/pytorch/" style="font-size: 13.33px;">pytorch</a> <a href="/tags/%E5%88%B7%E9%A2%98/" style="font-size: 10px;">刷题</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" style="font-size: 10px;">数据分析</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 13.33px;">机器学习</a> <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">深度学习</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 20px;">笔记</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">链接</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io" target="_blank" rel="noopener">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2024 Du-Jia</p>
+                
+                <p>Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>. Theme by <a href="https://github.com/ppoffice" target="_blank">PPOffice</a></p>
+                
+            </div>
+            <div class="footer-plugins">
+              
+    
+
+
+            </div>
+        </div>
+    </div>
+</footer>
+
+        
+    
+    <script>
+    var disqus_shortname = 'hexo-theme-hueman';
+    
+    
+    var disqus_url = 'https://du-jia.github.io/2020/03/04/other/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+
+    
+        
+<script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-share.min.js"></script>
+
+        
+<script src="/libs/lightgallery/js/lg-video.min.js"></script>
+
+    
+    
+        
+<script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML.js"></script>
+
+    
+
+    
+
+
+
+<!-- Custom Scripts -->
+
+<script src="/js/main.js"></script>
+
+
+    </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<!--
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+</body>
+</html>
