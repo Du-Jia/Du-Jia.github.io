@@ -4,19 +4,6 @@
   
     
     <entry>
-      <title>LLM基础/Tranformer 结构</title>
-      <link href="/2024/08/25/LLM%E5%9F%BA%E7%A1%80/Tranformer%20%E7%BB%93%E6%9E%84/"/>
-      <url>/2024/08/25/LLM%E5%9F%BA%E7%A1%80/Tranformer%20%E7%BB%93%E6%9E%84/</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>pytorch/PyTorch-Learn</title>
       <link href="/2024/08/25/pytorch/PyTorch-Learn/"/>
       <url>/2024/08/25/pytorch/PyTorch-Learn/</url>
@@ -93,7 +80,7 @@
       <link href="/2020/12/29/about/me/"/>
       <url>/2020/12/29/about/me/</url>
       
-        <content type="html"><![CDATA[<h1 id="About-Me"><a href="#About-Me" class="headerlink" title="About Me"></a>About Me</h1><p>现就读于北京邮电大学人工智能学院，研究方向为自然语言处理。</p><p>如果你发现博客中的文章有错误，可以通过邮件或者评论留言的方式向我提出，我会作出修改。</p><p><strong>联系方式：</strong></p><p>E-mail: du_jia_goodluck@163.com</p><p>微信： wxid_w7mq9qtebtzq22</p><p><a href="https://imgchr.com/i/rHH6sI" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2020/12/29/rHH6sI.jpg" alt="图片来自网络"></a></p>]]></content>
+        <content type="html"><![CDATA[<h1 id="About-Me"><a href="#About-Me" class="headerlink" title="About Me"></a>About Me</h1><p><a href="https://imgchr.com/i/rHH6sI" target="_blank" rel="noopener"><img src="https://s3.ax1x.com/2020/12/29/rHH6sI.jpg" alt="图片来自网络"></a></p><h2 id="学习经历"><a href="#学习经历" class="headerlink" title="学习经历"></a>学习经历</h2><div class="table-container"><table><thead><tr><th style="text-align:center">学习阶段</th><th style="text-align:center">学校</th><th style="text-align:center">专业</th><th style="text-align:center">研究方向</th></tr></thead><tbody><tr><td style="text-align:center">研究生</td><td style="text-align:center">北京邮电大学</td><td style="text-align:center">计算机技术</td><td style="text-align:center">自然语言处理</td></tr><tr><td style="text-align:center">本科</td><td style="text-align:center">北京信息科技大学</td><td style="text-align:center">计算机科学与技术</td><td style="text-align:center">自然语言处理</td></tr></tbody></table></div><h2 id="工作经历"><a href="#工作经历" class="headerlink" title="工作经历"></a>工作经历</h2><ul><li>科大讯飞，初级算法研究工程师（2023.07 - 至今）</li></ul><h2 id="实习经历"><a href="#实习经历" class="headerlink" title="实习经历"></a>实习经历</h2><ul><li>滴滴 - 用户画像 - 日常实习生 - 用户画像（2021.05 - 2021.08）</li><li>度小满 - AI Lab - 日常实习生 - 预训练、文本匹配（2021.09 - 2022.07）</li><li>澜舟科技 - 搜索组 - 暑期实习生 - （2022.07 - 2022.09）</li></ul><h2 id="论文发表"><a href="#论文发表" class="headerlink" title="论文发表"></a>论文发表</h2><ul><li><a href="https://aclanthology.org/2022.findings-emnlp.285/" target="_blank" rel="noopener">IGATE: Instance-Guided Prompt Learning for Few-Shot Text-Matching.Accepted by findings of EMNLP2022.</a></li></ul><p><strong>联系方式：</strong></p><p>E-mail: jia_du@foxmail.com</p><p><strong>P.S.</strong> 如果你发现文章有错误，可以通过邮件或者评论留言的方式向我提出，我会作出修改，感谢！</p>]]></content>
       
       
       
@@ -222,6 +209,8 @@
             
             <tag> 笔记 </tag>
             
+            <tag> CS224N </tag>
+            
         </tags>
       
     </entry>
@@ -329,33 +318,6 @@
             <tag> 笔记 </tag>
             
             <tag> 机器学习 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>CS224N 学习笔记 Lecture 1,2 Word2Vec</title>
-      <link href="/2020/03/04/CS224N/CS224N-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Lecture-1-2-Word2Vec/"/>
-      <url>/2020/03/04/CS224N/CS224N-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Lecture-1-2-Word2Vec/</url>
-      
-        <content type="html"><![CDATA[<h1 id="CS224n-课程学习笔记-1"><a href="#CS224n-课程学习笔记-1" class="headerlink" title="CS224n 课程学习笔记 1"></a>CS224n 课程学习笔记 1</h1><p>本节内容： Word2Vec</p><a id="more"></a><p><a href="https://www.bilibili.com/video/av61620135" target="_blank" rel="noopener">课程视频地址</a></p><h2 id="课程内容要点"><a href="#课程内容要点" class="headerlink" title="课程内容要点"></a>课程内容要点</h2><ul><li>理解Word Vector</li><li>基于词汇共现(word co-occurence)的word vector</li><li>word2vec模型</li><li>深入理解word2vec模型（具体的模型结构，公式推导及优化方法）</li><li>理解word2vec源码（google开源）</li></ul><h3 id="理解Word-Vector"><a href="#理解Word-Vector" class="headerlink" title="理解Word Vector"></a>理解Word Vector</h3><p>word vector是为了将文本数据转化为计算机能够计算的数字数据。</p><p>word vector: 将自然语言中的每个单词编码为一个向量，这个向量是对应的单词在某种“单词”空间(word space)中的一个点。</p><p>这样做的主要原因是：</p><p>我们认为存在某些$N (N &lt;= |V|)$维空间可以将某种语言的语义信息全部编码。</p><p>最简单的编码方式：<strong>one-hot vector</strong>。也就是把所有单词看作一个词汇表，除了相应的位置值为1，其他所有位置的值均为0.其缺点在于：</p><ol><li>这种表示方式过于稀疏，计算量极大</li><li>one-hot表示方式不能体现出单词之间的语义关系</li></ol><h3 id="基于SVD-Singular-Value-Decomposition-奇异值分解-的方法"><a href="#基于SVD-Singular-Value-Decomposition-奇异值分解-的方法" class="headerlink" title="基于SVD(Singular Value Decomposition, 奇异值分解) 的方法"></a>基于SVD(Singular Value Decomposition, 奇异值分解) 的方法</h3><p>基本思想：<br>通过统计单词共现(word co-occurrence)的次数形成一个巨大的共现矩阵(co-occurrrence matrix)，然后通过奇异值分解的方法降维，得到一个$|V|\times{k}$的矩阵，每一行即为对应的word vector。</p><p>求共现矩阵的两种方法：</p><ol><li>word-document matrix<ul><li>矩阵的每行表示一个词汇表中的单词，每列表示一个文件</li><li>扫描所有语料文件，每次单词$Wi$在document$Dj$中出现，则矩阵中相应元素$M_{ij}$计数增加</li></ul></li><li>window based co-occurrence matrix<ul><li>和word-document maticx方法类似，每行的行向量最终对应单词的word vector，区别在于这里每列表示相应单词在每行所表示的单词的窗口范围内出现的次数。</li><li>统计每个单词$W_j$出现在中心词$W_i$的窗口范围内的次数</li><li>这里的重要参数是window size</li></ul></li></ol><p>SVD将共现矩阵分解为三个矩阵相乘的形式: $X_{|V|\times|V|} = U_{|V|\times|V|}S_{|V|\times|V|}V_{|V|\times|V|}$</p><p>其中矩阵$S$是一个对角矩阵，通过取$S$矩阵中的$k$列与$U$最终得到word vector矩阵（$|V|\times{k}$）</p><h3 id="基于迭代的方法-Word2Vec"><a href="#基于迭代的方法-Word2Vec" class="headerlink" title="基于迭代的方法: Word2Vec"></a>基于迭代的方法: Word2Vec</h3><p>思路：</p><p>建立一个模型，这个模型通过训练最终可以在给出上下文的情况下对单词的概率进行编码。在这个模型里，通过上下文训练模型，而模型中的参数才是最终我们需要求取的所有word vector</p><p>word2vec模型实际上有两种算法：</p><ol><li>CBOW(Continuous bag-of-words)</li><li>SG(skip-gram)</li></ol><p>两种训练方法:</p><ol><li>negative sampling</li><li>hierarchical softmax</li></ol><p>下面对两种算法的细节进行介绍：</p><h4 id="CBOW"><a href="#CBOW" class="headerlink" title="CBOW"></a>CBOW</h4><p>输入上下文(context),预测中心词(center)</p><p><img src="http://5b0988e595225.cdn.sohucs.com/images/20181119/20d8cc4a484242b2a67c535736747c9b.jpeg" alt="CBOW模型-图片来自网络，侵删"></p><ul><li>输入：$x_{1k}, x_{2k}, …, x_{ck}$, context的on-hot vector形式</li><li>输入对应的权重矩阵： $W_{|V|\times{n}}$，其中$n$是word vector的编码维数</li><li>输出：$y_j$：ont-hot vector</li><li>对应权重矩阵：$W_{n\times|V|}$</li></ul><p>可以看到，可以得到两个Word Embedding矩阵(Word vector 和 Word Embedding可以换用)，一个对应上下文，一个对应中心词。是一个词在两个位置的向量。</p><p><strong>深入理解</strong></p><p>训练过程：</p><ol><li>为对应的context生成对应的ont-hot向量作为输入$x$</li><li>通过word vectors对输入进行编码(word embedding)$x * W_{input}$</li><li>求其平均值，得到隐藏层的值$h$</li><li>通过$W_{output}$评分：$z = h\cdot{W_{output}}$</li><li>把评分转化为概率分布$\hat{y} = softmax(z)$</li><li>把生成的概率转化为one-hot向量，与实际的中心词$y_j$比较</li></ol><p>目标函数：</p><p>这里采用交叉熵函数(cross-entropy)计算预测分布和实际分布的差距</p><script type="math/tex; mode=display">H(y,\hat{y}) = -\sum_{j=1}^{|V|}y_j\log{\hat{y_j}}</script><h4 id="Skip-Gram"><a href="#Skip-Gram" class="headerlink" title="Skip-Gram"></a>Skip-Gram</h4><p>输入中心词，预测上下文</p><p><img src="http://img5.imgtn.bdimg.com/it/u=1876034502,4074599079&amp;fm=26&amp;gp=0.jpg" alt="Skip-Gram模型-图片来自网络，侵删"></p><h2 id="Assignment-1"><a href="#Assignment-1" class="headerlink" title="Assignment 1"></a>Assignment 1</h2><p>简单难度，主要目的是对两种方法有一个直观的理解</p><h2 id="个人体会"><a href="#个人体会" class="headerlink" title="个人体会"></a>个人体会</h2>]]></content>
-      
-      
-      <categories>
-          
-          <category> CS224N笔记 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> NLP </tag>
-            
-            <tag> 笔记 </tag>
             
         </tags>
       

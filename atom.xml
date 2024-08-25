@@ -6,7 +6,7 @@
   <link href="https://du-jia.github.io/atom.xml" rel="self"/>
   
   <link href="https://du-jia.github.io/"/>
-  <updated>2024-08-25T06:26:06.318Z</updated>
+  <updated>2020-09-22T10:54:53.255Z</updated>
   <id>https://du-jia.github.io/</id>
   
   <author>
@@ -15,19 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>LLM基础/Tranformer 结构</title>
-    <link href="https://du-jia.github.io/2024/08/25/LLM%E5%9F%BA%E7%A1%80/Tranformer%20%E7%BB%93%E6%9E%84/"/>
-    <id>https://du-jia.github.io/2024/08/25/LLM%E5%9F%BA%E7%A1%80/Tranformer%20%E7%BB%93%E6%9E%84/</id>
-    <published>2024-08-25T06:24:05.976Z</published>
-    <updated>2024-08-25T06:26:06.318Z</updated>
-    
-    
-    
-    
-    
-  </entry>
   
   <entry>
     <title>pytorch/PyTorch-Learn</title>
@@ -112,14 +99,14 @@
     <link href="https://du-jia.github.io/2020/12/29/about/me/"/>
     <id>https://du-jia.github.io/2020/12/29/about/me/</id>
     <published>2020-12-29T06:58:33.000Z</published>
-    <updated>2020-12-29T07:12:39.439Z</updated>
+    <updated>2024-08-25T09:33:27.978Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;About-Me&quot;&gt;&lt;a href=&quot;#About-Me&quot; class=&quot;headerlink&quot; title=&quot;About Me&quot;&gt;&lt;/a&gt;About</summary>
+    <summary type="html">&lt;h1 id=&quot;About-Me&quot;&gt;&lt;a href=&quot;#About-Me&quot; class=&quot;headerlink&quot; title=&quot;About Me&quot;&gt;&lt;/a&gt;About Me&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://imgchr.com/i/rHH6sI&quot;</summary>
         
       
     
@@ -156,7 +143,7 @@
     <link href="https://du-jia.github.io/2020/08/18/CS224N/CS224N-Lecture-8-Notes/"/>
     <id>https://du-jia.github.io/2020/08/18/CS224N/CS224N-Lecture-8-Notes/</id>
     <published>2020-08-18T10:29:03.000Z</published>
-    <updated>2020-08-18T10:30:59.227Z</updated>
+    <updated>2024-08-25T09:34:39.613Z</updated>
     
     
       
@@ -241,7 +228,7 @@
     <link href="https://du-jia.github.io/2020/04/02/CS224N/CS224N-Lecture5-notes/"/>
     <id>https://du-jia.github.io/2020/04/02/CS224N/CS224N-Lecture5-notes/</id>
     <published>2020-04-02T15:11:06.000Z</published>
-    <updated>2020-04-02T15:13:59.568Z</updated>
+    <updated>2024-08-25T09:35:11.360Z</updated>
     
     
       
@@ -260,6 +247,8 @@
     <category term="NLP" scheme="https://du-jia.github.io/tags/NLP/"/>
     
     <category term="笔记" scheme="https://du-jia.github.io/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="CS224N" scheme="https://du-jia.github.io/tags/CS224N/"/>
     
   </entry>
   
@@ -360,27 +349,6 @@
     <category term="笔记" scheme="https://du-jia.github.io/tags/%E7%AC%94%E8%AE%B0/"/>
     
     <category term="机器学习" scheme="https://du-jia.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CS224N 学习笔记 Lecture 1,2 Word2Vec</title>
-    <link href="https://du-jia.github.io/2020/03/04/CS224N/CS224N-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Lecture-1-2-Word2Vec/"/>
-    <id>https://du-jia.github.io/2020/03/04/CS224N/CS224N-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Lecture-1-2-Word2Vec/</id>
-    <published>2020-03-04T07:23:09.000Z</published>
-    <updated>2020-03-06T16:50:43.342Z</updated>
-    
-    
-    <summary type="html">对CS224n 2019冬季学期课程Lectrue 1,2 Word2Vec部分的笔记。主要总结课程涉及的重点内容，以及自己的问题和思路，以起到复习提高的作用。</summary>
-    
-    
-    
-    <category term="CS224N笔记" scheme="https://du-jia.github.io/categories/CS224N%E7%AC%94%E8%AE%B0/"/>
-    
-    
-    <category term="NLP" scheme="https://du-jia.github.io/tags/NLP/"/>
-    
-    <category term="笔记" scheme="https://du-jia.github.io/tags/%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
