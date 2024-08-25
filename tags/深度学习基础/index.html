@@ -6,24 +6,19 @@
     
 
     
-    <title>Word2Vec源码理解 | Du-Jia&#39;s Blog</title>
+    <title>标签: 深度学习基础 | Du-Jia&#39;s Blog</title>
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <meta name="keywords" content="NLP,笔记" />
-    
-    <meta name="description" content="NLP的重要模型">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Word2Vec源码理解">
-<meta property="og:url" content="https://du-jia.github.io/2020/03/06/other/word2vec%E6%BA%90%E7%A0%81%E7%90%86%E8%A7%A3/index.html">
+    <meta name="description" content="AI&#x2F;NLP&#x2F;LLM Algorithm Engineer; Junior Algorithm Researcher at iFLYTEK">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Du-Jia&#39;s Blog">
+<meta property="og:url" content="https://du-jia.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="Du-Jia&#39;s Blog">
-<meta property="og:description" content="NLP的重要模型">
+<meta property="og:description" content="AI&#x2F;NLP&#x2F;LLM Algorithm Engineer; Junior Algorithm Researcher at iFLYTEK">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-03-06T03:52:00.000Z">
-<meta property="article:modified_time" content="2020-03-06T03:55:13.624Z">
 <meta property="article:author" content="Du-Jia">
-<meta property="article:tag" content="NLP">
-<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="LLM; NLP; AI; Algorithm Engineer">
 <meta name="twitter:card" content="summary">
     
 
@@ -65,9 +60,9 @@
     
 
 
-<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="Du-Jia's Blog" type="application/atom+xml">
-
+<meta name="generator" content="Hexo 4.2.1">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Du-Jia's Blog" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 </head>
@@ -97,7 +92,7 @@
                                     <a class="main-nav-list-link" href="/">主页</a>
                                 </li>
                             
-                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/CS224N%E7%AC%94%E8%AE%B0/">CS224N笔记</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/LLM/">LLM</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/LLM/Transformer/">Transformer</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/NLP%E5%85%A5%E9%97%A8%E8%AE%A1%E5%88%92-%E7%AC%94%E8%AE%B0/">NLP入门计划-笔记</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%E5%BA%93/">库</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">源码分析</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%95%B0%E6%8D%AE%E5%90%88%E6%88%90%E5%8F%8A%E8%BF%87%E6%BB%A4/">数据合成及过滤</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">论文阅读笔记</a></li></ul>
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/CS224N%E7%AC%94%E8%AE%B0/">CS224N笔记</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/LLM/">LLM</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/LLM/Transformer/">Transformer</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%E5%AD%A6%E4%B9%A0/CS224N/">CS224N</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%E5%AD%A6%E4%B9%A0/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%E5%AD%A6%E4%B9%A0/%E7%AE%97%E6%B3%95/">算法</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%E7%AC%94%E8%AE%B0/NLP/">NLP</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%E7%AC%94%E8%AE%B0/Pytorch/">Pytorch</a></li></ul></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/Prompt-Learning/">Prompt Learning</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%95%B0%E6%8D%AE%E5%90%88%E6%88%90%E5%8F%8A%E8%BF%87%E6%BB%A4/">数据合成及过滤</a></li></ul></li></ul>
                                     
                                 <li class="main-nav-list-item" >
                                     <a class="main-nav-list-link" href="/about/index.html">关于</a>
@@ -158,155 +153,142 @@
                         <div class="main-body-header">
     <h1 class="header">
     
-    <a class="page-title-link" href="/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">源码分析</a>
+    <i class="icon fa fa-tag"></i>标签: <em>深度学习基础</em>
     </h1>
 </div>
 
                         <div class="main-body-content">
-                            <article id="post-other/word2vec源码理解" class="article article-single article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
+                            
+
+    
+    
         
-            <header class="article-header">
-                
+        
+        <section class="archives-wrap">
+            <div class="archive-year-wrap">
+                <a href="/archives/2021" class="archive-year"><i class="icon fa fa-calendar-o"></i>2021</a>
+            </div>
+            <div class="archives">
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2021/05/07/pytorch/PyTorch-SGD-%E6%B1%82%E5%87%BD%E6%95%B0%E6%9C%80%E4%BC%98%E5%80%BC/" class="thumbnail">
+    
+    
+        <span class="thumbnail-image thumbnail-none"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="https://du-jia.github.io/2021/05/07/pytorch/PyTorch-SGD-%E6%B1%82%E5%87%BD%E6%95%B0%E6%9C%80%E4%BC%98%E5%80%BC/">0</span>
+    
+</span>
+
+
+    
+</a>
+
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/Pytorch/">Pytorch</a>
+            </div>
+            <div class="date"><time datetime="2021-05-07T14:17:45.000Z" itemprop="datePublished">2021-05-07</time></div>
+        </div>
+        
     
         <h1 class="article-title" itemprop="name">
-        Word2Vec源码理解
+        <a href="/2021/05/07/pytorch/PyTorch-SGD-%E6%B1%82%E5%87%BD%E6%95%B0%E6%9C%80%E4%BC%98%E5%80%BC/">PyTorch-SGD-求函数最优值</a>
         </h1>
     
 
-            </header>
-        
-        
-            <div class="article-meta">
-                
-    <div class="article-date">
-      <i class="fa fa-calendar"></i>
-      <a href="/2020/03/06/other/word2vec%E6%BA%90%E7%A0%81%E7%90%86%E8%A7%A3/" class="article-date">
-         <time datetime="2020-03-06T03:52:00.000Z" itemprop="datePublished">2020-03-06</time>
-      </a>
+        <p class="article-excerpt">
+            面试遇到的一个基础问题：使用PyTorch求一个函数的最优值代码如下：
+import torch.optim as optim
+import torch
+
+# 参数为x，(1,1)
+x = torch.randn([1],requires_grad=True)
+
+def function(x):
+    return x**2 - 2*x + 1
+
+optimizer = optim.SGD([x
+        </p>
     </div>
-
-
-                
-
-                
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/NLP/" rel="tag">NLP</a>, <a class="tag-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a>
-    </div>
-
-                
-
-                
-
-            </div>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-            <a id="more"></a>
-<h1 id="Word2Vec源码学习"><a href="#Word2Vec源码学习" class="headerlink" title="Word2Vec源码学习"></a>Word2Vec源码学习</h1><h2 id="理解Word2Vec模型"><a href="#理解Word2Vec模型" class="headerlink" title="理解Word2Vec模型"></a>理解Word2Vec模型</h2><h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><h2 id="Google源码分析"><a href="#Google源码分析" class="headerlink" title="Google源码分析"></a>Google源码分析</h2>
-        </div>
-        <footer class="article-footer">
-            
-
-
-
-    <a data-url="https://du-jia.github.io/2020/03/06/other/word2vec%E6%BA%90%E7%A0%81%E7%90%86%E8%A7%A3/" data-id="cm09rjuct0016zci93a1gcwmg" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
-<script>
-    (function ($) {
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-        </footer>
-    </div>
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BlogPosting",
-        "author": {
-            "@type": "Person",
-            "name": "Du-Jia"
-        },
-        "headline": "Word2Vec源码理解",
-        "image": "https://Du-Jia.github.io",
-        "keywords": "NLP 笔记",
-        "genre": "源码分析",
-        "datePublished": "2020-03-06",
-        "dateCreated": "2020-03-06",
-        "dateModified": "2020-03-06",
-        "url": "https://Du-Jia.github.io/2020/03/06/other/word2vec源码理解/",
-        "description": "
-Word2Vec源码学习理解Word2Vec模型具体实现Google源码分析",
-        "wordCount": 18
-    }
-</script>
-
 </article>
+    
 
-    <section id="comments">
+    
     
         
-    <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript" target="_blank" rel="noopener">comments powered by Disqus.</a></noscript>
-    </div>
+            </div></section>
+        
+        
+        <section class="archives-wrap">
+            <div class="archive-year-wrap">
+                <a href="/archives/2020" class="archive-year"><i class="icon fa fa-calendar-o"></i>2020</a>
+            </div>
+            <div class="archives">
+    
+    
+    
+        <div class="article-row">
+    
+        <article class="article article-summary">
+    <div class="article-summary-inner">
+        
+        <a href="/2020/09/22/pytorch/pytorch-basic/" class="thumbnail">
+    
+    
+        <span style="background-image:url(https://s1.ax1x.com/2020/09/22/wOfiUP.jpg)" alt="pytorch_basic" class="thumbnail-image"></span>
+    
+    
+        
+<span class="comment-counter">
+    <i class="fa fa-comments-o"></i>
+    
+        <span class="disqus-comment-count" data-disqus-identifier="" data-disqus-url="https://du-jia.github.io/2020/09/22/pytorch/pytorch-basic/">0</span>
+    
+</span>
 
 
     
-    </section>
+</a>
+
+        
+        <div class="article-meta">
+            <div class="category">
+            <a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/Pytorch/">Pytorch</a>
+            </div>
+            <div class="date"><time datetime="2020-09-22T10:48:40.000Z" itemprop="datePublished">2020-09-22</time></div>
+        </div>
+        
+    
+        <h1 class="article-title" itemprop="name">
+        <a href="/2020/09/22/pytorch/pytorch-basic/">pytorch_basic</a>
+        </h1>
+    
+
+        <p class="article-excerpt">
+            
+pytorch baisc最近用Pytorch的时候发现对于pytorch的一些细节问题掌握不够充分。包括整个框架的使用流程，Tensor的一些初始化，类型转换的细节也理解的不是很深。为了方便以后能够更从容的使用Pytorch，重新学习以下Pytorch的一些基础内容，并对重点做一下记录。
+目前大致按照官方tutorials的顺序记录，随着学习的深入和对文档的查阅慢慢补充。
+Basic - Te
+        </p>
+    </div>
+</article>
+    
+
+
+    </div></section>
 
 
 
@@ -344,29 +326,6 @@ Word2Vec源码学习理解Word2Vec模型具体实现Google源码分析",
             
         </ul>
     </div>
-    
-        
-<nav id="article-nav">
-    
-        <a href="/2020/03/06/other/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" id="article-nav-newer" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">下一篇</strong>
-        <p class="article-nav-title">
-        
-            算法学习笔记
-        
-        </p>
-        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
-    </a>
-    
-    
-        <a href="/2020/03/04/other/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/" id="article-nav-older" class="article-nav-link-wrap">
-        <strong class="article-nav-caption">上一篇</strong>
-        <p class="article-nav-title">统计学习方法学习笔记</p>
-        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
-        </a>
-    
-</nav>
-
     
     <div class="widgets-container">
         
@@ -414,7 +373,7 @@ Word2Vec源码学习理解Word2Vec模型具体实现Google源码分析",
                         </div>
                         
                         <div class="item-inner">
-                            <p class="item-category"></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%95%B0%E6%8D%AE%E5%90%88%E6%88%90%E5%8F%8A%E8%BF%87%E6%BB%A4/">数据合成及过滤</a></p>
                             <p class="item-title"><a href="/2024/08/25/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/" class="title">强化学习基础</a></p>
                             <p class="item-date"><time datetime="2024-08-25T15:21:22.000Z" itemprop="datePublished">2024-08-25</time></p>
                         </div>
@@ -454,7 +413,7 @@ Word2Vec源码学习理解Word2Vec模型具体实现Google源码分析",
                         </div>
                         
                         <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">论文阅读笔记</a></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/Prompt-Learning/">Prompt Learning</a></p>
                             <p class="item-title"><a href="/2021/12/10/Prompt/PromptBERT%20Improving%20BERT%20Sentence%20Embeddings/" class="title">PromptBERT: Improving BERT Sentence Embeddings with Prompt</a></p>
                             <p class="item-date"><time datetime="2021-12-10T10:23:09.000Z" itemprop="datePublished">2021-12-10</time></p>
                         </div>
@@ -474,7 +433,7 @@ Word2Vec源码学习理解Word2Vec模型具体实现Google源码分析",
                         </div>
                         
                         <div class="item-inner">
-                            <p class="item-category"></p>
+                            <p class="item-category"><a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a><i class="icon fa fa-angle-right"></i><a class="article-category-link" href="/categories/%E7%AC%94%E8%AE%B0/Pytorch/">Pytorch</a></p>
                             <p class="item-title"><a href="/2021/05/07/pytorch/PyTorch-SGD-%E6%B1%82%E5%87%BD%E6%95%B0%E6%9C%80%E4%BC%98%E5%80%BC/" class="title">PyTorch-SGD-求函数最优值</a></p>
                             <p class="item-date"><time datetime="2021-05-07T14:17:45.000Z" itemprop="datePublished">2021-05-07</time></p>
                         </div>
@@ -489,7 +448,7 @@ Word2Vec源码学习理解Word2Vec模型具体实现Google源码分析",
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CS224N%E7%AC%94%E8%AE%B0/">CS224N笔记</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/LLM/">LLM</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/LLM/Transformer/">Transformer</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/NLP%E5%85%A5%E9%97%A8%E8%AE%A1%E5%88%92-%E7%AC%94%E8%AE%B0/">NLP入门计划-笔记</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BA%93/">库</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">源码分析</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%95%B0%E6%8D%AE%E5%90%88%E6%88%90%E5%8F%8A%E8%BF%87%E6%BB%A4/">数据合成及过滤</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">论文阅读笔记</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CS224N%E7%AC%94%E8%AE%B0/">CS224N笔记</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/LLM/">LLM</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/LLM/Transformer/">Transformer</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0/CS224N/">CS224N</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AD%A6%E4%B9%A0/%E7%AE%97%E6%B3%95/">算法</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AC%94%E8%AE%B0/NLP/">NLP</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%AC%94%E8%AE%B0/Pytorch/">Pytorch</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/">论文阅读</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/Prompt-Learning/">Prompt Learning</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%95%B0%E6%8D%AE%E5%90%88%E6%88%90%E5%8F%8A%E8%BF%87%E6%BB%A4/">数据合成及过滤</a><span class="category-list-count">2</span></li></ul></li></ul>
         </div>
     </div>
 
@@ -499,7 +458,7 @@ Word2Vec源码学习理解Word2Vec模型具体实现Google源码分析",
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">八月 2024</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">5</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/08/">八月 2024</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">九月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">3</span></li></ul>
         </div>
     </div>
 
@@ -509,7 +468,7 @@ Word2Vec源码学习理解Word2Vec模型具体实现Google源码分析",
     <div class="widget-wrap widget-list">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CS224N/" rel="tag">CS224N</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Selection/" rel="tag">Data Selection</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LLM/" rel="tag">LLM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/" rel="tag">NLP</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pandas/" rel="tag">Pandas</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reinforce-Learning-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="tag">Reinforce Learning, 基础知识</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Transformer/" rel="tag">Transformer</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/pytorch/" rel="tag">pytorch</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%B7%E9%A2%98/" rel="tag">刷题</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" rel="tag">数据分析</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag">深度学习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CS224N/" rel="tag">CS224N</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Data-Selection/" rel="tag">Data Selection</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LLM/" rel="tag">LLM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NLP/" rel="tag">NLP</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pytorch/" rel="tag">Pytorch</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Transformer/" rel="tag">Transformer</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%88%B7%E9%A2%98/" rel="tag">刷题</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%90%88%E6%88%90%E5%8F%8A%E8%BF%87%E6%BB%A4/" rel="tag">数据合成及过滤</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag">深度学习</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/" rel="tag">深度学习基础</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AC%94%E8%AE%B0/" rel="tag">笔记</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" rel="tag">论文阅读</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -519,7 +478,7 @@ Word2Vec源码学习理解Word2Vec模型具体实现Google源码分析",
     <div class="widget-wrap widget-float">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/CS224N/" style="font-size: 15px;">CS224N</a> <a href="/tags/Data-Selection/" style="font-size: 10px;">Data Selection</a> <a href="/tags/LLM/" style="font-size: 10px;">LLM</a> <a href="/tags/NLP/" style="font-size: 17.5px;">NLP</a> <a href="/tags/Pandas/" style="font-size: 10px;">Pandas</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/Reinforce-Learning-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" style="font-size: 10px;">Reinforce Learning, 基础知识</a> <a href="/tags/Transformer/" style="font-size: 10px;">Transformer</a> <a href="/tags/pytorch/" style="font-size: 12.5px;">pytorch</a> <a href="/tags/%E5%88%B7%E9%A2%98/" style="font-size: 10px;">刷题</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" style="font-size: 10px;">数据分析</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 12.5px;">机器学习</a> <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">深度学习</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 20px;">笔记</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a>
+            <a href="/tags/CS224N/" style="font-size: 15px;">CS224N</a> <a href="/tags/Data-Selection/" style="font-size: 10px;">Data Selection</a> <a href="/tags/LLM/" style="font-size: 10px;">LLM</a> <a href="/tags/NLP/" style="font-size: 17.5px;">NLP</a> <a href="/tags/Pytorch/" style="font-size: 12.5px;">Pytorch</a> <a href="/tags/Transformer/" style="font-size: 10px;">Transformer</a> <a href="/tags/%E5%88%B7%E9%A2%98/" style="font-size: 10px;">刷题</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%90%88%E6%88%90%E5%8F%8A%E8%BF%87%E6%BB%A4/" style="font-size: 10px;">数据合成及过滤</a> <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" style="font-size: 12.5px;">机器学习</a> <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" style="font-size: 10px;">深度学习</a> <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/" style="font-size: 12.5px;">深度学习基础</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 20px;">笔记</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 10px;">算法</a> <a href="/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" style="font-size: 10px;">论文阅读</a>
         </div>
     </div>
 
@@ -577,13 +536,11 @@ Word2Vec源码学习理解Word2Vec模型具体实现Google源码分析",
     var disqus_shortname = 'hexo-theme-hueman';
     
     
-    var disqus_url = 'https://du-jia.github.io/2020/03/06/other/word2vec%E6%BA%90%E7%A0%81%E7%90%86%E8%A7%A3/';
-    
     (function() {
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
     })();
     </script>

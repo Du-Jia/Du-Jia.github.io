@@ -42,13 +42,21 @@
     <link href="https://du-jia.github.io/2024/08/25/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/"/>
     <id>https://du-jia.github.io/2024/08/25/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/</id>
     <published>2024-08-25T15:21:22.000Z</published>
-    <updated>2024-08-25T15:41:59.352Z</updated>
+    <updated>2024-08-25T16:24:21.000Z</updated>
+    
+    
+    <summary type="html">MoDS, 一种针对模型做数据选择的框架，从质量、覆盖范围、必要性三个角度评估指令微调数据对于 LLM 指令微调的增益</summary>
     
     
     
+    <category term="论文阅读" scheme="https://du-jia.github.io/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/"/>
+    
+    <category term="数据合成及过滤" scheme="https://du-jia.github.io/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E6%95%B0%E6%8D%AE%E5%90%88%E6%88%90%E5%8F%8A%E8%BF%87%E6%BB%A4/"/>
     
     
-    <category term="Reinforce Learning, 基础知识" scheme="https://du-jia.github.io/tags/Reinforce-Learning-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    <category term="论文阅读" scheme="https://du-jia.github.io/tags/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/"/>
+    
+    <category term="数据合成及过滤" scheme="https://du-jia.github.io/tags/%E6%95%B0%E6%8D%AE%E5%90%88%E6%88%90%E5%8F%8A%E8%BF%87%E6%BB%A4/"/>
     
   </entry>
   
@@ -57,7 +65,7 @@
     <link href="https://du-jia.github.io/2024/08/25/LLM%E5%9F%BA%E7%A1%80/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%A4%8D%E7%8E%B0Transformer/"/>
     <id>https://du-jia.github.io/2024/08/25/LLM%E5%9F%BA%E7%A1%80/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%A4%8D%E7%8E%B0Transformer/</id>
     <published>2024-08-25T07:23:09.000Z</published>
-    <updated>2024-08-25T15:22:04.531Z</updated>
+    <updated>2024-08-25T16:11:13.233Z</updated>
     
     
     <summary type="html">从零开始复现Transformer</summary>
@@ -82,14 +90,16 @@
     <link href="https://du-jia.github.io/2021/12/10/Prompt/PromptBERT%20Improving%20BERT%20Sentence%20Embeddings/"/>
     <id>https://du-jia.github.io/2021/12/10/Prompt/PromptBERT%20Improving%20BERT%20Sentence%20Embeddings/</id>
     <published>2021-12-10T10:23:09.000Z</published>
-    <updated>2021-12-11T11:21:25.560Z</updated>
+    <updated>2024-08-25T16:15:38.998Z</updated>
     
     
-    <summary type="html">openreview的一篇句子表示相关文章，效果非常好，仔细学习了一下作者的工作</summary>
+    <summary type="html">一篇句子表示相关文章，效果非常好，仔细学习了一下作者的工作</summary>
     
     
     
-    <category term="论文阅读笔记" scheme="https://du-jia.github.io/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/"/>
+    <category term="论文阅读" scheme="https://du-jia.github.io/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/"/>
+    
+    <category term="Prompt Learning" scheme="https://du-jia.github.io/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/Prompt-Learning/"/>
     
     
     <category term="NLP" scheme="https://du-jia.github.io/tags/NLP/"/>
@@ -103,7 +113,7 @@
     <link href="https://du-jia.github.io/2021/05/07/pytorch/PyTorch-SGD-%E6%B1%82%E5%87%BD%E6%95%B0%E6%9C%80%E4%BC%98%E5%80%BC/"/>
     <id>https://du-jia.github.io/2021/05/07/pytorch/PyTorch-SGD-%E6%B1%82%E5%87%BD%E6%95%B0%E6%9C%80%E4%BC%98%E5%80%BC/</id>
     <published>2021-05-07T14:17:45.000Z</published>
-    <updated>2021-05-07T14:32:26.528Z</updated>
+    <updated>2024-08-25T16:16:57.438Z</updated>
     
     
       
@@ -116,8 +126,16 @@
     
     
     
+    <category term="笔记" scheme="https://du-jia.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
     
-    <category term="pytorch" scheme="https://du-jia.github.io/tags/pytorch/"/>
+    <category term="Pytorch" scheme="https://du-jia.github.io/categories/%E7%AC%94%E8%AE%B0/Pytorch/"/>
+    
+    
+    <category term="笔记" scheme="https://du-jia.github.io/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="Pytorch" scheme="https://du-jia.github.io/tags/Pytorch/"/>
+    
+    <category term="深度学习基础" scheme="https://du-jia.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/"/>
     
   </entry>
   
@@ -147,7 +165,7 @@
     <link href="https://du-jia.github.io/2020/09/22/pytorch/pytorch-basic/"/>
     <id>https://du-jia.github.io/2020/09/22/pytorch/pytorch-basic/</id>
     <published>2020-09-22T10:48:40.000Z</published>
-    <updated>2020-09-22T10:56:11.526Z</updated>
+    <updated>2024-08-25T16:16:49.783Z</updated>
     
     
       
@@ -160,8 +178,16 @@
     
     
     
+    <category term="笔记" scheme="https://du-jia.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
     
-    <category term="pytorch" scheme="https://du-jia.github.io/tags/pytorch/"/>
+    <category term="Pytorch" scheme="https://du-jia.github.io/categories/%E7%AC%94%E8%AE%B0/Pytorch/"/>
+    
+    
+    <category term="笔记" scheme="https://du-jia.github.io/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="Pytorch" scheme="https://du-jia.github.io/tags/Pytorch/"/>
+    
+    <category term="深度学习基础" scheme="https://du-jia.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80/"/>
     
   </entry>
   
@@ -199,7 +225,7 @@
     <link href="https://du-jia.github.io/2020/08/05/other/Deep-Learning-Notes-Week-1/"/>
     <id>https://du-jia.github.io/2020/08/05/other/Deep-Learning-Notes-Week-1/</id>
     <published>2020-08-05T13:09:21.000Z</published>
-    <updated>2020-08-06T15:03:23.390Z</updated>
+    <updated>2024-08-25T16:15:04.481Z</updated>
     
     
       
@@ -212,10 +238,12 @@
     
     
     
-    <category term="NLP入门计划-笔记" scheme="https://du-jia.github.io/categories/NLP%E5%85%A5%E9%97%A8%E8%AE%A1%E5%88%92-%E7%AC%94%E8%AE%B0/"/>
+    <category term="笔记" scheme="https://du-jia.github.io/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="NLP" scheme="https://du-jia.github.io/categories/%E7%AC%94%E8%AE%B0/NLP/"/>
     
     
-    <category term="笔记" scheme="https://du-jia.github.io/tags/%E7%AC%94%E8%AE%B0/"/>
+    <category term="NLP" scheme="https://du-jia.github.io/tags/NLP/"/>
     
     <category term="机器学习" scheme="https://du-jia.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
@@ -224,38 +252,11 @@
   </entry>
   
   <entry>
-    <title>Pandas数据分析</title>
-    <link href="https://du-jia.github.io/2020/04/04/other/Pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
-    <id>https://du-jia.github.io/2020/04/04/other/Pandas%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/</id>
-    <published>2020-04-04T15:20:14.000Z</published>
-    <updated>2020-04-04T15:37:01.091Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;Pandas数据分析&quot;&gt;&lt;a href=&quot;#Pandas数据分析&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    
-    <category term="笔记" scheme="https://du-jia.github.io/tags/%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="数据分析" scheme="https://du-jia.github.io/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
-    
-    <category term="Pandas" scheme="https://du-jia.github.io/tags/Pandas/"/>
-    
-  </entry>
-  
-  <entry>
     <title>CS224N-Lecture5-notes</title>
     <link href="https://du-jia.github.io/2020/04/02/CS224N/CS224N-Lecture5-notes/"/>
     <id>https://du-jia.github.io/2020/04/02/CS224N/CS224N-Lecture5-notes/</id>
     <published>2020-04-02T15:11:06.000Z</published>
-    <updated>2024-08-25T09:44:02.766Z</updated>
+    <updated>2024-08-25T16:11:00.591Z</updated>
     
     
       
@@ -268,7 +269,9 @@
     
     
     
-    <category term="CS224N笔记" scheme="https://du-jia.github.io/categories/CS224N%E7%AC%94%E8%AE%B0/"/>
+    <category term="学习" scheme="https://du-jia.github.io/categories/%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="CS224N" scheme="https://du-jia.github.io/categories/%E5%AD%A6%E4%B9%A0/CS224N/"/>
     
     
     <category term="NLP" scheme="https://du-jia.github.io/tags/NLP/"/>
@@ -280,40 +283,11 @@
   </entry>
   
   <entry>
-    <title>numpy基础</title>
-    <link href="https://du-jia.github.io/2020/03/13/other/numpy%E5%9F%BA%E7%A1%80/"/>
-    <id>https://du-jia.github.io/2020/03/13/other/numpy%E5%9F%BA%E7%A1%80/</id>
-    <published>2020-03-13T13:37:32.000Z</published>
-    <updated>2020-03-13T13:42:17.963Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">
-  &lt;div tabindex=&quot;-1&quot; id=&quot;notebook&quot; class=&quot;border-box-sizing&quot;&gt;
-    &lt;div class=&quot;container&quot; id=&quot;notebook-container&quot;&gt;
-
-&lt;div class=&quot;cell</summary>
-        
-      
-    
-    
-    
-    <category term="库" scheme="https://du-jia.github.io/categories/%E5%BA%93/"/>
-    
-    
-    <category term="Python" scheme="https://du-jia.github.io/tags/Python/"/>
-    
-  </entry>
-  
-  <entry>
     <title>算法学习笔记</title>
     <link href="https://du-jia.github.io/2020/03/06/other/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     <id>https://du-jia.github.io/2020/03/06/other/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</id>
     <published>2020-03-06T03:56:57.000Z</published>
-    <updated>2020-03-09T14:36:49.517Z</updated>
+    <updated>2024-08-25T16:12:00.683Z</updated>
     
     
       
@@ -326,10 +300,10 @@
     
     
     
-    <category term="算法" scheme="https://du-jia.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    <category term="学习" scheme="https://du-jia.github.io/categories/%E5%AD%A6%E4%B9%A0/"/>
     
+    <category term="算法" scheme="https://du-jia.github.io/categories/%E5%AD%A6%E4%B9%A0/%E7%AE%97%E6%B3%95/"/>
     
-    <category term="笔记" scheme="https://du-jia.github.io/tags/%E7%AC%94%E8%AE%B0/"/>
     
     <category term="算法" scheme="https://du-jia.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
@@ -338,39 +312,20 @@
   </entry>
   
   <entry>
-    <title>Word2Vec源码理解</title>
-    <link href="https://du-jia.github.io/2020/03/06/other/word2vec%E6%BA%90%E7%A0%81%E7%90%86%E8%A7%A3/"/>
-    <id>https://du-jia.github.io/2020/03/06/other/word2vec%E6%BA%90%E7%A0%81%E7%90%86%E8%A7%A3/</id>
-    <published>2020-03-06T03:52:00.000Z</published>
-    <updated>2020-03-06T03:55:13.624Z</updated>
-    
-    
-    <summary type="html">NLP的重要模型</summary>
-    
-    
-    
-    <category term="源码分析" scheme="https://du-jia.github.io/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"/>
-    
-    
-    <category term="NLP" scheme="https://du-jia.github.io/tags/NLP/"/>
-    
-    <category term="笔记" scheme="https://du-jia.github.io/tags/%E7%AC%94%E8%AE%B0/"/>
-    
-  </entry>
-  
-  <entry>
     <title>统计学习方法学习笔记</title>
     <link href="https://du-jia.github.io/2020/03/04/other/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/"/>
     <id>https://du-jia.github.io/2020/03/04/other/%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/</id>
     <published>2020-03-04T12:00:00.000Z</published>
-    <updated>2024-08-25T06:23:30.999Z</updated>
+    <updated>2024-08-25T16:12:16.194Z</updated>
     
     
     <summary type="html">学习机器学习的基础理论</summary>
     
     
     
-    <category term="学习笔记" scheme="https://du-jia.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <category term="学习" scheme="https://du-jia.github.io/categories/%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="机器学习" scheme="https://du-jia.github.io/categories/%E5%AD%A6%E4%B9%A0/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
     
     <category term="笔记" scheme="https://du-jia.github.io/tags/%E7%AC%94%E8%AE%B0/"/>
@@ -384,14 +339,16 @@
     <link href="https://du-jia.github.io/2020/03/04/CS224N/CS224N-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Lecture-1-2-Word2Vec/"/>
     <id>https://du-jia.github.io/2020/03/04/CS224N/CS224N-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Lecture-1-2-Word2Vec/</id>
     <published>2020-03-04T07:23:09.000Z</published>
-    <updated>2024-08-25T09:43:59.455Z</updated>
+    <updated>2024-08-25T16:09:35.679Z</updated>
     
     
     <summary type="html">对CS224n 2019冬季学期课程Lectrue 1,2 Word2Vec部分的笔记。主要总结课程涉及的重点内容，以及自己的问题和思路，以起到复习提高的作用。</summary>
     
     
     
-    <category term="CS224N笔记" scheme="https://du-jia.github.io/categories/CS224N%E7%AC%94%E8%AE%B0/"/>
+    <category term="学习" scheme="https://du-jia.github.io/categories/%E5%AD%A6%E4%B9%A0/"/>
+    
+    <category term="CS224N" scheme="https://du-jia.github.io/categories/%E5%AD%A6%E4%B9%A0/CS224N/"/>
     
     
     <category term="NLP" scheme="https://du-jia.github.io/tags/NLP/"/>
