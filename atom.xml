@@ -30,27 +30,6 @@
   </entry>
   
   <entry>
-    <title>Hello World</title>
-    <link href="https://du-jia.github.io/2024/08/25/hello-world/"/>
-    <id>https://du-jia.github.io/2024/08/25/hello-world/</id>
-    <published>2024-08-25T05:56:12.975Z</published>
-    <updated>2024-08-25T06:16:15.672Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a</summary>
-        
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
     <title>PromptBERT: Improving BERT Sentence Embeddings with Prompt</title>
     <link href="https://du-jia.github.io/2021/12/10/Prompt/PromptBERT%20Improving%20BERT%20Sentence%20Embeddings/"/>
     <id>https://du-jia.github.io/2021/12/10/Prompt/PromptBERT%20Improving%20BERT%20Sentence%20Embeddings/</id>
@@ -99,7 +78,7 @@
     <link href="https://du-jia.github.io/2020/12/29/about/me/"/>
     <id>https://du-jia.github.io/2020/12/29/about/me/</id>
     <published>2020-12-29T06:58:33.000Z</published>
-    <updated>2024-08-25T09:33:27.978Z</updated>
+    <updated>2024-08-25T14:59:34.033Z</updated>
     
     
       
@@ -143,7 +122,7 @@
     <link href="https://du-jia.github.io/2020/08/18/CS224N/CS224N-Lecture-8-Notes/"/>
     <id>https://du-jia.github.io/2020/08/18/CS224N/CS224N-Lecture-8-Notes/</id>
     <published>2020-08-18T10:29:03.000Z</published>
-    <updated>2024-08-25T09:34:39.613Z</updated>
+    <updated>2024-08-25T09:43:36.159Z</updated>
     
     
       
@@ -228,7 +207,7 @@
     <link href="https://du-jia.github.io/2020/04/02/CS224N/CS224N-Lecture5-notes/"/>
     <id>https://du-jia.github.io/2020/04/02/CS224N/CS224N-Lecture5-notes/</id>
     <published>2020-04-02T15:11:06.000Z</published>
-    <updated>2024-08-25T09:35:11.360Z</updated>
+    <updated>2024-08-25T09:44:02.766Z</updated>
     
     
       
@@ -349,6 +328,54 @@
     <category term="笔记" scheme="https://du-jia.github.io/tags/%E7%AC%94%E8%AE%B0/"/>
     
     <category term="机器学习" scheme="https://du-jia.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CS224N 学习笔记 Lecture 1,2 Word2Vec</title>
+    <link href="https://du-jia.github.io/2020/03/04/CS224N/CS224N-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Lecture-1-2-Word2Vec/"/>
+    <id>https://du-jia.github.io/2020/03/04/CS224N/CS224N-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-Lecture-1-2-Word2Vec/</id>
+    <published>2020-03-04T07:23:09.000Z</published>
+    <updated>2024-08-25T09:43:59.455Z</updated>
+    
+    
+    <summary type="html">对CS224n 2019冬季学期课程Lectrue 1,2 Word2Vec部分的笔记。主要总结课程涉及的重点内容，以及自己的问题和思路，以起到复习提高的作用。</summary>
+    
+    
+    
+    <category term="CS224N笔记" scheme="https://du-jia.github.io/categories/CS224N%E7%AC%94%E8%AE%B0/"/>
+    
+    
+    <category term="NLP" scheme="https://du-jia.github.io/tags/NLP/"/>
+    
+    <category term="笔记" scheme="https://du-jia.github.io/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+    <category term="CS224N" scheme="https://du-jia.github.io/tags/CS224N/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>从零开始复现Transformer</title>
+    <link href="https://du-jia.github.io/2020/03/04/LLM%E5%9F%BA%E7%A1%80/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%A4%8D%E7%8E%B0Transformer/"/>
+    <id>https://du-jia.github.io/2020/03/04/LLM%E5%9F%BA%E7%A1%80/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%A4%8D%E7%8E%B0Transformer/</id>
+    <published>2020-03-04T07:23:09.000Z</published>
+    <updated>2024-08-25T09:45:05.189Z</updated>
+    
+    
+    <summary type="html">从零开始复现Transformer</summary>
+    
+    
+    
+    <category term="LLM" scheme="https://du-jia.github.io/categories/LLM/"/>
+    
+    <category term="Transformer" scheme="https://du-jia.github.io/categories/LLM/Transformer/"/>
+    
+    
+    <category term="NLP" scheme="https://du-jia.github.io/tags/NLP/"/>
+    
+    <category term="LLM" scheme="https://du-jia.github.io/tags/LLM/"/>
+    
+    <category term="Transformer" scheme="https://du-jia.github.io/tags/Transformer/"/>
     
   </entry>
   
